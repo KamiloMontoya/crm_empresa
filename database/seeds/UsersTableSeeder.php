@@ -62,8 +62,8 @@ class UsersTableSeeder extends Seeder
         // Assign admin role to default user
         $user->assignRole('admin');
 
-        // // Generate avatar to defautl user NO correr en HEROKU
-        // $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
-        // Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+        // Generate avatar to defautl user NO correr en HEROKU
+        $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
+        Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
     }
 }

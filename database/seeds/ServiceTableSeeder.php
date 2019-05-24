@@ -47,5 +47,9 @@ class ServiceTableSeeder extends Seeder
             ]
         ]);
 
+        // Assign permissions to admin role
+        $admin = Role::findByName('admin');
+        $admin->givePermissionTo(Permission::all());
+
     }
 }
