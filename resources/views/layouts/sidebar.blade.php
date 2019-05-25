@@ -7,6 +7,13 @@
                 </a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="/contacts">
+                    <i class="nav-icon fa fa-users"></i> Contactos
+                </a>
+            </li>
+
             @can('read-services')
             <li class="nav-item">
                 <a class="nav-link" href="/services">
