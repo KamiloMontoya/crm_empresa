@@ -65059,7 +65059,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("th", { staticClass: "d-none d-sm-table-cell" })
+              _c("th", {})
             ])
           ]),
           _vm._v(" "),
@@ -65311,7 +65311,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+    return _c("td", {}, [
       _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-pencil-alt" })
       ])
@@ -66645,7 +66645,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("th", { staticClass: "d-none d-sm-table-cell" })
+              _c("th", {})
             ])
           ]),
           _vm._v(" "),
@@ -66924,7 +66924,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+    return _c("td", {}, [
       _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-pencil-alt" })
       ])
@@ -68575,7 +68575,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("th", { staticClass: "d-none d-sm-table-cell" })
+              _c("th", {})
             ])
           ]),
           _vm._v(" "),
@@ -68596,9 +68596,7 @@ var render = function() {
                     _vm._v(_vm._s(service.id))
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                    _vm._v(_vm._s(service.name))
-                  ]),
+                  _c("td", {}, [_vm._v(_vm._s(service.name))]),
                   _vm._v(" "),
                   _c("td", { staticClass: "d-none d-sm-table-cell" }, [
                     _vm._v(_vm._s(service.value))
@@ -68789,7 +68787,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+    return _c("td", {}, [
       _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-pencil-alt" })
       ])
