@@ -63855,7 +63855,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.put('/api/profile/updateAuthUser', this.user).then(function (response) {
           _this2.errors = {};
           _this2.submiting = false;
-          _this2.$toasted.global.error('Profile updated!');
+          _this2.$toasted.global.error('Perfil actualizado!');
         }).catch(function (error) {
           _this2.errors = error.response.data.errors;
           _this2.submiting = false;
@@ -64116,7 +64116,7 @@ var render = function() {
           { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
           [
             _c("h4", { staticClass: "float-left pt-2" }, [
-              _vm._v("Edit Profile")
+              _vm._v("Edita Perfil")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions mr-1" }, [
@@ -64137,7 +64137,7 @@ var render = function() {
                     ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
                     : _c("i", { staticClass: "fas fa-check" }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "ml-1" }, [_vm._v("Save")])
+                  _c("span", { staticClass: "ml-1" }, [_vm._v("Guardar")])
                 ]
               )
             ])
@@ -64162,7 +64162,7 @@ var render = function() {
                           { staticClass: "form-text text-muted mb-3" },
                           [
                             _vm._v(
-                              "You can change your avatar here or remove the current avatar"
+                              "Puedes cambiar tu avatar aquí o eliminar el avatar actual"
                             )
                           ]
                         ),
@@ -64181,7 +64181,7 @@ var render = function() {
                   { staticClass: "form-group row justify-content-md-center" },
                   [
                     _c("label", { staticClass: "col-md-3" }, [
-                      _vm._v("Full Name")
+                      _vm._v("Nombre completo")
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-9" }, [
@@ -64210,7 +64210,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("small", { staticClass: "form-text text-muted" }, [
                         _vm._v(
-                          "Enter your name, so people you know can recognize you."
+                          "Ingrese su nombre para que las personas que conozca lo reconozcan."
                         )
                       ]),
                       _vm._v(" "),
@@ -64255,7 +64255,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("small", { staticClass: "form-text text-muted" }, [
                         _vm._v(
-                          "This email will be displayed on your public profile."
+                          "Este correo electrónico se mostrará en su perfil público.."
                         )
                       ]),
                       _vm._v(" "),
@@ -64468,7 +64468,7 @@ var render = function() {
                     ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
                     : _c("i", { staticClass: "fas fa-check" }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "ml-1" }, [_vm._v("Save")])
+                  _c("span", { staticClass: "ml-1" }, [_vm._v("Guardar")])
                 ]
               )
             ])

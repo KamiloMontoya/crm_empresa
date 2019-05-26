@@ -8,7 +8,7 @@
             <a class="btn btn-primary" href="#" :disabled="submiting" @click.prevent="updatePasswordAuthUser">
               <i class="fas fa-spinner fa-spin" v-if="submiting"></i>
               <i class="fas fa-check" v-else></i>
-              <span class="ml-1">Save</span>
+              <span class="ml-1">Guardar</span>
             </a>
           </div>
         </div>
