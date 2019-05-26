@@ -29,7 +29,7 @@
 								        <tr>
 								            <th> Cus </th>
 								            <th> Servicio </th>
-								            <th> Valor ($) </th>
+								            <th class="d-none d-sm-table-cell"> Valor ($) </th>
 								            <th> Acciones </th>
 								        </tr>
 							        </thead>
@@ -38,7 +38,7 @@
 								        <tr>
 								            <td>{{ $chs->cus }}</td>
 								            <td>{{ $chs->service->name }}</td>
-								            <td>{{ $chs->service->value }}</td>
+								            <td class="d-none d-sm-table-cell">{{ $chs->service->value }}</td>
 								            <td>
 												<form action="{{ route('contact_has_services.destroy', $chs->id) }}" class="delete_contactService" method="POST" style="display: inline;">
 							                      <input type="hidden" name="_method" value="DELETE">

@@ -46,7 +46,7 @@
               <a href="#" class="text-dark" @click.prevent="sort('created_at')">Registered</a>
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'desc'}"></i>
             </th>
-            <th class="d-none d-sm-table-cell"></th>
+            <th class=""></th>
           </tr>
         </thead>
         <tbody>
@@ -74,7 +74,7 @@
             <td class="d-none d-sm-table-cell">
               <small>{{user.created_at | moment("LL")}}</small> - <small class="text-muted">{{user.created_at | moment("LT")}}</small>
             </td>
-            <td class="d-none d-sm-table-cell">
+            <td class="">
               <a href="#" class="text-muted"><i class="fas fa-pencil-alt"></i></a>
             </td>
           </tr>

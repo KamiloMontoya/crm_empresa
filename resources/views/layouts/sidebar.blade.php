@@ -17,7 +17,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="/contact_has_services">
-                    <i class="nav-icon fa fa-list"></i> Servicios Contratados
+                    <i class="nav-icon fa fa-list"></i> Serv. Contratados
                 </a>
             </li>
 
