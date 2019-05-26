@@ -38,13 +38,15 @@ class ServiceController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'description' => 'required|string',
-            'value' => 'required|string'
+            'value' => 'required|numeric',
+            'prefix' => 'required|string'
         ]);
 
         $service = Service::create([
             'name' => $request->name,
             'description' => $request->description,
-            'value' => $request->value
+            'value' => $request->value,
+            'prefix' => strtoupper($request->prefix)
         ]);
 
        
@@ -57,13 +59,15 @@ class ServiceController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'description' => 'required|string',
-            'value' => 'required|string'
+            'value' => 'required|numeric',
+            'prefix' => 'required|string'
         ]);
 
         $service = Service::find($request->id);
         $service->name = $request->name;
         $service->description = $request->description;
         $service->value = $request->value;
+        $service->prefix = strtoupper($request->prefix);
 
         $service->save();
     }

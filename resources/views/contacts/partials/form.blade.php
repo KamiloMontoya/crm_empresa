@@ -1,6 +1,6 @@
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="row">
-	<div class="col-6">
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
 		<div class="form-group">
             <label>Nombre</label>
             <input type="text" class="form-control"  class="@if($errors->has('first_name')) is-invalid @endif" name="first_name" value="{{ isset($contact) ? $contact->first_name : old('first_name') }}" placeholder="Nombre">
@@ -35,7 +35,7 @@
 
 	</div>
 	
-	<div class="col-6">
+	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
 		<div class="form-group">
             <label>Apellido</label>
             <input type="text" class="form-control"  class="@if($errors->has('last_name')) is-invalid @endif" name="last_name" value="{{ isset($contact) ? $contact->last_name :  old('last_name') }}" placeholder="Nombre">

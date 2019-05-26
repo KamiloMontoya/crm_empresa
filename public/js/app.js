@@ -68903,6 +68903,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -69044,7 +69049,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Valor [%]")]),
+            _c("label", [_vm._v("Valor [$]")]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -69072,6 +69077,39 @@ var render = function() {
             _vm.errors.password
               ? _c("div", { staticClass: "invalid-feedback" }, [
                   _vm._v(_vm._s(_vm.errors.value[0]))
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Prefijo (Usado para la generación de CUS)")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.service.prefix,
+                  expression: "service.prefix"
+                }
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.errors.prefix },
+              attrs: { type: "text", placeholder: "Ejemplo ID, CU" },
+              domProps: { value: _vm.service.prefix },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.service, "prefix", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.password
+              ? _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(_vm._s(_vm.errors.prefix[0]))
                 ])
               : _vm._e()
           ])
@@ -69143,6 +69181,12 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69313,28 +69357,30 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "card-header-action ml-1",
-                  attrs: { href: "#", disabled: _vm.submitingDestroy },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.destroy($event)
-                    }
-                  }
-                },
-                [
-                  _vm.submitingDestroy
-                    ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
-                    : _c("i", { staticClass: "far fa-trash-alt" }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "d-md-down-none ml-1" }, [
-                    _vm._v("Eliminar")
-                  ])
-                ]
-              )
+              _vm.service.contactHasService == 0
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "card-header-action ml-1",
+                      attrs: { href: "#", disabled: _vm.submitingDestroy },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.destroy($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm.submitingDestroy
+                        ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
+                        : _c("i", { staticClass: "far fa-trash-alt" }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "d-md-down-none ml-1" }, [
+                        _vm._v("Eliminar")
+                      ])
+                    ]
+                  )
+                : _vm._e()
             ])
           ]
         ),
@@ -69440,7 +69486,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Valor [%]")]),
+                    _c("label", [_vm._v("Valor [$]")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -69468,6 +69514,41 @@ var render = function() {
                     _vm.errors.value
                       ? _c("div", { staticClass: "invalid-feedback" }, [
                           _vm._v(_vm._s(_vm.errors.value[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [
+                      _vm._v("Prefijo (Usado para la generación de CUS):")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.prefix,
+                          expression: "service.prefix"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.errors.prefix },
+                      attrs: { type: "text", placeholder: "Ejemplo ID, CU" },
+                      domProps: { value: _vm.service.prefix },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.service, "prefix", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.prefix
+                      ? _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v(_vm._s(_vm.errors.prefix[0]))
                         ])
                       : _vm._e()
                   ])

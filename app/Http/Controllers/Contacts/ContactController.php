@@ -62,13 +62,13 @@ class ContactController extends Controller
                     ->withInput();
         }else{
             $contact = new Contact();
-            $contact->first_name = $request->input("first_name");
-            $contact->last_name = $request->input("last_name");
-            $contact->email = $request->input("email");
-            $contact->phone = $request->input("phone");
-            $contact->celphone = $request->input("celphone");
-            $contact->address = $request->input("address");
-            $contact->city = $request->input("city");
+            $contact->first_name = $request->input("first_name"); 
+            $contact->last_name = $request->input("last_name"); 
+            $contact->email = $request->input("email"); 
+            $contact->phone = $request->input("phone"); 
+            $contact->celphone = $request->input("celphone"); 
+            $contact->address = $request->input("address"); 
+            $contact->city = $request->input("city"); 
             $contact->save();
         }
 
@@ -98,7 +98,7 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $valid = $this->validator($request->all());
+        $valid = $this->validator($request->all(), $id);
 
         if($valid->fails()){
             return redirect()->back()
@@ -106,26 +106,33 @@ class ContactController extends Controller
                     ->withInput();
         }else{
             $contact = Contact::findOrFail($id);
-            $contact->first_name = $request->input("first_name");
-            $contact->last_name = $request->input("last_name");
-            $contact->email = $request->input("email");
-            $contact->phone = $request->input("phone");
-            $contact->celphone = $request->input("celphone");
-            $contact->address = $request->input("address");
-            $contact->city = $request->input("city");
+
+            $contact->first_name = $request->input("first_name"); 
+            $contact->last_name = $request->input("last_name"); 
+            $contact->email = $request->input("email"); 
+            $contact->phone = $request->input("phone"); 
+            $contact->celphone = $request->input("celphone"); 
+            $contact->address = $request->input("address"); 
+            $contact->city = $request->input("city"); 
+            
             $contact->save();
         }
 
         return redirect()->route('contacts.index')->with('message', 'Contacto actualizado correctamente.');
     }
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
+    protected function validator(array $data, $id = null)
+    {   
+        $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:contacts,email',
             'celphone' => 'required'
-        ]);
+        ];
+
+        if ( $id ){
+            $rules['email'] = $rules['email'] .','. $id. ',id' ;
+        }
+        return Validator::make($data, $rules);
     }
 }

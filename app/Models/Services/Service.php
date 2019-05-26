@@ -10,7 +10,11 @@ class Service extends Model
 	use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name', 'description', 'value'];
+    protected $fillable = ['name', 'description', 'value', 'prefix'];
 
+    public function contactHasService()
+    {
+        return $this->hasMany(\App\Models\ContactHasServices\ContactHasService::class, 'service_id', 'id');
+    }
    
 }

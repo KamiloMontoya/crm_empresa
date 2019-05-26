@@ -10,7 +10,7 @@
               <i class="fas fa-check" v-else></i>
               <span class="ml-1">Guardar</span>
             </a>
-            <a class="card-header-action ml-1" href="#" :disabled="submitingDestroy" @click.prevent="destroy">
+            <a class="card-header-action ml-1" href="#" v-if="service.contactHasService == 0" :disabled="submitingDestroy" @click.prevent="destroy">
               <i class="fas fa-spinner fa-spin" v-if="submitingDestroy"></i>
               <i class="far fa-trash-alt" v-else></i>
               <span class="d-md-down-none ml-1">Eliminar</span>
@@ -35,9 +35,15 @@
                 <div class="invalid-feedback" v-if="errors.description">{{errors.description[0]}}</div>
               </div>
               <div class="form-group">
-                <label>Valor [%]</label>
+                <label>Valor [$]</label>
                 <input type="text" class="form-control" :class="{'is-invalid': errors.value}" v-model="service.value">
                 <div class="invalid-feedback" v-if="errors.value">{{errors.value[0]}}</div>
+              </div>
+
+              <div class="form-group">
+                <label>Prefijo (Usado para la generación de CUS):</label>
+                <input type="text"  placeholder="Ejemplo ID, CU" class="form-control" :class="{'is-invalid': errors.prefix}" v-model="service.prefix">
+                <div class="invalid-feedback" v-if="errors.prefix">{{errors.prefix[0]}}</div>
               </div>
               
             </div>

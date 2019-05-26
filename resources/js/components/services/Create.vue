@@ -24,9 +24,14 @@
             <div class="invalid-feedback" v-if="errors.email">{{errors.description[0]}}</div>
           </div>
           <div class="form-group">
-            <label>Valor [%]</label>
+            <label>Valor [$]</label>
             <input type="text" class="form-control" :class="{'is-invalid': errors.value}" v-model="service.value">
             <div class="invalid-feedback" v-if="errors.password">{{errors.value[0]}}</div>
+          </div>
+          <div class="form-group">
+            <label>Prefijo (Usado para la generación de CUS)</label>
+            <input type="text" placeholder="Ejemplo ID, CU" class="form-control" :class="{'is-invalid': errors.prefix}" v-model="service.prefix">
+            <div class="invalid-feedback" v-if="errors.password">{{errors.prefix[0]}}</div>
           </div>
          
         </div>

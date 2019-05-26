@@ -18,6 +18,9 @@
 	        		@include('contacts.partials.form', ['contact' => $contact] )
 			    </form>
 	        </div>
+
+	        @include('contacts.partials.contact_services', ['contact' => $contact] )
+
 	      </div>
 	    </div>
 	</div>

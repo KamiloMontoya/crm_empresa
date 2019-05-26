@@ -14,17 +14,27 @@
                 </a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_has_services">
+                    <i class="nav-icon fa fa-list"></i> Servicios Contratados
+                </a>
+            </li>
+
+           
+            @can('read-users','read-roles', 'read-services')
+            <li class="nav-title">Configuración</li>
+            @endcan
+
             @can('read-services')
             <li class="nav-item">
                 <a class="nav-link" href="/services">
-                    <i class="nav-icon fa fa-book"></i> Servicios
+                    <i class="nav-icon fa fa-book"></i> Admin. Servicios
                 </a>
             </li>
             @endcan
 
-            @can('read-users','read-roles')
-            <li class="nav-title">Configuración</li>
-            @endcan
+
             @can('read-users')
             <li class="nav-item">
                 <a class="nav-link" href="/users">
