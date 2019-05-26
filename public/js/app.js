@@ -63959,11 +63959,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         parallelUploads: 1,
         maxFilesize: {
           limit: 10,
-          message: 'The size image is {{filesize}}MB is greater than the {{maxFilesize}}MB'
+          message: 'Esta imágen tiene un tamaño no permitido ( {{filesize}}MB ). El tamaño máximo permitido es {{maxFilesize}}MB'
         },
         acceptedFiles: {
           extensions: ['image/*'],
-          message: 'You are uploading an invalid file'
+          message: 'La extención del archivo no es valida'
         }
       }
     };
@@ -64039,7 +64039,7 @@ var render = function() {
                   staticClass: "dz-message btn btn-outline-secondary btn-sm",
                   attrs: { type: "button" }
                 },
-                [_vm._v("Choose file")]
+                [_vm._v("Elegir archivo")]
               )
             ])
           ],
@@ -64047,7 +64047,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("small", { staticClass: "form-text text-muted" }, [
-          _vm._v("The maximum file size allowed is 10MB.")
+          _vm._v("El tamaño máximo permitido para el archivo es 10MB.")
         ]),
         _vm._v(" "),
         _vm.errors.status
@@ -64082,7 +64082,7 @@ var render = function() {
             _vm.submiting
               ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
               : _vm._e(),
-            _vm._v(" Restart avatar\n    ")
+            _vm._v(" Restablecer avatar\n    ")
           ]
         )
       ],

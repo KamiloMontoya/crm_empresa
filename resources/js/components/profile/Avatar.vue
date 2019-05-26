@@ -7,10 +7,10 @@
         :on-sending="sendingAvatar"
         :on-complete="completeAvatar">
         <template slot="clip-uploader-action">
-            <button class="dz-message btn btn-outline-secondary btn-sm" type="button">Choose file</button>
+            <button class="dz-message btn btn-outline-secondary btn-sm" type="button">Elegir archivo</button>
         </template>
       </vue-clip>
-      <small class="form-text text-muted">The maximum file size allowed is 10MB.</small>
+      <small class="form-text text-muted">El tamaño máximo permitido para el archivo es 10MB.</small>
       <small class="form-text text-danger" v-if="errors.status">{{errors.message}}</small>
       <div class="progress mt-2 mb-3" style="height: 1px;">
         <div class="progress-bar"
@@ -19,7 +19,7 @@
         </div>
       </div>
       <button class="btn btn-ghost-info btn-sm" type="button" @click="removeAvatarAuthUser" :disabled="submiting">
-        <i class="fas fa-spinner fa-spin" v-if="submiting"></i> Restart avatar
+        <i class="fas fa-spinner fa-spin" v-if="submiting"></i> Restablecer avatar
       </button>
     </div>
   </div>
@@ -39,11 +39,11 @@ export default {
         parallelUploads: 1,
         maxFilesize: {
           limit: 10,
-          message: 'The size image is {{filesize}}MB is greater than the {{maxFilesize}}MB'
+          message: 'Esta imágen tiene un tamaño no permitido ( {{filesize}}MB ). El tamaño máximo permitido es {{maxFilesize}}MB'
         },
         acceptedFiles: {
           extensions: ['image/*'],
-          message: 'You are uploading an invalid file'
+          message: 'La extención del archivo no es valida'
         }
       }
     }

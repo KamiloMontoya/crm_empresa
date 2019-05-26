@@ -28,7 +28,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js?v=4') }}" defer></script>
+    <script src="{{ asset('js/app.js?v=5') }}" defer></script>
     
 
 
@@ -44,7 +44,7 @@
     <script>
     if ('serviceWorker' in navigator ) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/service-worker.js?v=4').then(function(registration) {
+        navigator.serviceWorker.register('/service-worker.js?v=5').then(function(registration) {
           // Registration was successful
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
         }, function(err) {
