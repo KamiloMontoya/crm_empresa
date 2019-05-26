@@ -63555,7 +63555,7 @@ var render = function() {
       _c(
         "small",
         { staticClass: "text-muted text-uppercase font-weight-bold" },
-        [_vm._v("Users registered")]
+        [_vm._v("Usuarios registrados")]
       )
     ])
   ])
@@ -63683,7 +63683,7 @@ var render = function() {
       _c(
         "small",
         { staticClass: "text-muted text-uppercase font-weight-bold" },
-        [_vm._v("Roles created")]
+        [_vm._v("Roles creados")]
       )
     ])
   ])
@@ -64421,7 +64421,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this.password = {};
           _this.errors = {};
           _this.submiting = false;
-          _this.$toasted.global.error('Password changed!');
+          _this.$toasted.global.error('Contraseña actualizada!');
         }).catch(function (error) {
           _this.errors = error.response.data.errors;
           _this.submiting = false;
@@ -64447,7 +64447,7 @@ var render = function() {
           { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
           [
             _c("h4", { staticClass: "float-left pt-2" }, [
-              _vm._v("Edit Password")
+              _vm._v("Cambiar Contraseña")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions mr-1" }, [
@@ -64482,7 +64482,7 @@ var render = function() {
               { staticClass: "form-group row justify-content-md-center" },
               [
                 _c("label", { staticClass: "col-md-3" }, [
-                  _vm._v("Current password")
+                  _vm._v("Contraseña actual")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-9" }, [
@@ -64511,7 +64511,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("small", { staticClass: "form-text text-muted" }, [
                     _vm._v(
-                      "You must provide your current password in order to change it."
+                      "Debe proporcionar su contraseña actual para poder cambiarla"
                     )
                   ]),
                   _vm._v(" "),
@@ -64529,7 +64529,7 @@ var render = function() {
               { staticClass: "form-group row justify-content-md-center" },
               [
                 _c("label", { staticClass: "col-md-3" }, [
-                  _vm._v("New password")
+                  _vm._v("Nueva contraseña")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-9" }, [
@@ -64570,7 +64570,7 @@ var render = function() {
               { staticClass: "form-group row justify-content-md-center" },
               [
                 _c("label", { staticClass: "col-md-3" }, [
-                  _vm._v("Password confirmation")
+                  _vm._v("Repetir nueva contraseña")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-9" }, [
@@ -64678,7 +64678,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -65012,7 +65011,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("User")]
+                  [_vm._v("Usuario")]
                 ),
                 _vm._v(" "),
                 _c("i", {
@@ -65043,7 +65042,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Registered")]
+                  [_vm._v("Registro")]
                 ),
                 _vm._v(" "),
                 _c("i", {
@@ -65267,10 +65266,6 @@ var render = function() {
               _vm._v(" "),
               _vm._m(2),
               _vm._v(" "),
-              _c("p", { staticClass: "text-muted" }, [
-                _vm._v("Try changing the filters or add a new one")
-              ]),
-              _vm._v(" "),
               _vm._m(3)
             ])
           : _vm._e(),
@@ -65292,7 +65287,7 @@ var staticRenderFns = [
       "div",
       { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
       [
-        _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("Users")]),
+        _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("Usuarios")]),
         _vm._v(" "),
         _c("div", { staticClass: "card-header-actions mr-1" }, [
           _c(
@@ -65301,7 +65296,7 @@ var staticRenderFns = [
               staticClass: "btn btn-success",
               attrs: { href: "/users/create" }
             },
-            [_vm._v("New user")]
+            [_vm._v("Nuevo usuario")]
           )
         ])
       ]
@@ -65322,7 +65317,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "mb-0 mt-3" }, [
-      _c("strong", [_vm._v("Could not find any items")])
+      _c("strong", [_vm._v("No se encontraron resultados para la busqueda")])
     ])
   },
   function() {
@@ -65335,7 +65330,10 @@ var staticRenderFns = [
         staticClass: "btn btn-success",
         attrs: { href: "/users/create", role: "button" }
       },
-      [_c("i", { staticClass: "fa fa-plus" }), _vm._v("  New User\n      ")]
+      [
+        _c("i", { staticClass: "fa fa-plus" }),
+        _vm._v("  Nuevo Usuario\n      ")
+      ]
     )
   }
 ]
@@ -65473,7 +65471,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submiting) {
         this.submiting = true;
         axios.post('/api/users/store', this.user).then(function (response) {
-          _this.$toasted.global.error('Created user!');
+          _this.$toasted.global.error('Usuario creado!');
           location.href = '/users';
         }).catch(function (error) {
           _this.errors = error.response.data.errors;
@@ -65508,7 +65506,9 @@ var render = function() {
           "div",
           { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
           [
-            _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("New User")]),
+            _c("h4", { staticClass: "float-left pt-2" }, [
+              _vm._v("Nuevo Usuario")
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions mr-1" }, [
               _c(
@@ -65528,7 +65528,7 @@ var render = function() {
                     ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
                     : _c("i", { staticClass: "fas fa-check" }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "ml-1" }, [_vm._v("Save")])
+                  _c("span", { staticClass: "ml-1" }, [_vm._v("Guardar")])
                 ]
               )
             ])
@@ -65537,7 +65537,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card-body px-0" }, [
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Full Name")]),
+            _c("label", [_vm._v("Nombre Completo")]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -65835,7 +65835,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get('/api/users/getUserRoles/' + res[2]).then(function (response) {
         _this.user = response.data;
       }).catch(function (error) {
-        _this.$toasted.global.error('User does not exist!');
+        _this.$toasted.global.error('Useario no existe!');
         location.href = '/users';
       }).then(function () {
         _this.loading = false;
@@ -65856,7 +65856,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submiting) {
         this.submiting = true;
         axios.put('/api/users/update/' + this.user.id, this.user).then(function (response) {
-          _this3.$toasted.global.error('Updated user!');
+          _this3.$toasted.global.error('Usuario actualizado correctamente!');
           location.href = '/users';
         }).catch(function (error) {
           _this3.errors = error.response.data.errors;
@@ -65870,15 +65870,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submitingDestroy) {
         this.submitingDestroy = true;
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this user!",
+          title: "Esta seguro?",
+          text: "Una vez eliminado este usuario, no podrá recuperarlo!",
           icon: "warning",
           buttons: true,
           dangerMode: true
         }).then(function (willDelete) {
           if (willDelete) {
             axios.delete('/api/users/' + _this4.user.id).then(function (response) {
-              _this4.$toasted.global.error('Deleted user!');
+              _this4.$toasted.global.error('Borrar usuario!');
               location.href = '/users';
             }).catch(function (error) {
               _this4.errors = error.response.data.errors;
@@ -65906,7 +65906,9 @@ var render = function() {
           "div",
           { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
           [
-            _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("Edit User")]),
+            _c("h4", { staticClass: "float-left pt-2" }, [
+              _vm._v("Edición de Usuario")
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions mr-1" }, [
               _c(
@@ -65926,7 +65928,7 @@ var render = function() {
                     ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
                     : _c("i", { staticClass: "fas fa-check" }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "ml-1" }, [_vm._v("Save")])
+                  _c("span", { staticClass: "ml-1" }, [_vm._v("Guardar")])
                 ]
               ),
               _vm._v(" "),
@@ -65948,7 +65950,7 @@ var render = function() {
                     : _c("i", { staticClass: "far fa-trash-alt" }),
                   _vm._v(" "),
                   _c("span", { staticClass: "d-md-down-none ml-1" }, [
-                    _vm._v("Delete")
+                    _vm._v("Eliminar")
                   ])
                 ]
               )
@@ -65960,7 +65962,7 @@ var render = function() {
           !_vm.loading
             ? _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "form-group col-md-9" }, [
-                  _c("label", [_vm._v("Full Name")]),
+                  _c("label", [_vm._v("Nombre completo")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -66124,7 +66126,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { staticClass: "col-form-label" }, [
-                      _vm._v("Registered")
+                      _vm._v("Registrado")
                     ]),
                     _vm._v(" "),
                     _c(
@@ -66221,7 +66223,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -66567,7 +66568,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Role")]
+                  [_vm._v("Rol")]
                 ),
                 _vm._v(" "),
                 _c("i", {
@@ -66596,7 +66597,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Slug")]
+                  [_vm._v("Identificador")]
                 ),
                 _vm._v(" "),
                 _c("i", {
@@ -66612,9 +66613,9 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("th", [_vm._v("Users using")]),
+              _c("th", [_vm._v("Usuarios asignados")]),
               _vm._v(" "),
-              _c("th", [_vm._v("Permissions")]),
+              _c("th", [_vm._v("Permisos")]),
               _vm._v(" "),
               _c("th", { staticClass: "d-none d-sm-table-cell" }, [
                 _c(
@@ -66629,7 +66630,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Created")]
+                  [_vm._v("Creado")]
                 ),
                 _vm._v(" "),
                 _c("i", {
@@ -66880,10 +66881,6 @@ var render = function() {
               _vm._v(" "),
               _vm._m(2),
               _vm._v(" "),
-              _c("p", { staticClass: "text-muted" }, [
-                _vm._v("Try changing the filters or add a new one")
-              ]),
-              _vm._v(" "),
               _vm._m(3)
             ])
           : _vm._e(),
@@ -66914,7 +66911,7 @@ var staticRenderFns = [
               staticClass: "btn btn-success",
               attrs: { href: "/roles/create" }
             },
-            [_vm._v("New role")]
+            [_vm._v("Nuevo rol")]
           )
         ])
       ]
@@ -66935,7 +66932,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "mb-0 mt-3" }, [
-      _c("strong", [_vm._v("Could not find any items")])
+      _c("strong", [_vm._v("No se encontraron resultados para la busqueda")])
     ])
   },
   function() {
@@ -66948,7 +66945,7 @@ var staticRenderFns = [
         staticClass: "btn btn-success",
         attrs: { href: "/users/create", role: "button" }
       },
-      [_c("i", { staticClass: "fa fa-plus" }), _vm._v("  New Role\n      ")]
+      [_c("i", { staticClass: "fa fa-plus" }), _vm._v("  Nuevo Rol\n      ")]
     )
   }
 ]
@@ -67095,7 +67092,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submiting) {
         this.submiting = true;
         axios.post('/api/roles/store', this.role).then(function (response) {
-          _this.$toasted.global.error('Created role!');
+          _this.$toasted.global.error('Rol creado exitosamente!');
           location.href = '/roles';
         }).catch(function (error) {
           _this.errors = error.response.data.errors;
@@ -67140,7 +67137,7 @@ var render = function() {
           "div",
           { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
           [
-            _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("New Role")]),
+            _c("h4", { staticClass: "float-left pt-2" }, [_vm._v("Nuevo Rol")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions mr-1" }, [
               _c(
@@ -67171,7 +67168,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card-body px-0" }, [
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Role name")]),
+            _c("label", [_vm._v("Nombre del rol")]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -67204,7 +67201,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("label", [_vm._v("Role slug")]),
+            _c("label", [_vm._v("Identificador")]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -67359,7 +67356,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("small", { staticClass: "text-muted" }, [
         _vm._v(
-          "Create a new role and choose the permissions so you can assign it to users."
+          "Cree un nuevo rol y asigne los permisos que tendrán sus usuarios."
         )
       ])
     ])
@@ -67369,11 +67366,13 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header px-0 bg-transparent" }, [
-      _c("strong", [_vm._v("Permissions")]),
+      _c("strong", [_vm._v("Permisos")]),
       _c("br"),
       _vm._v(" "),
       _c("small", { staticClass: "text-muted" }, [
-        _vm._v("Enable or disable permissions and choose access to modules.")
+        _vm._v(
+          "Habilite o deshabilite permisos para acceder a modulos de la aplicación."
+        )
       ])
     ])
   }
@@ -67584,7 +67583,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get('/api/roles/getRoleModulesPermissions/' + res[2]).then(function (response) {
         _this.role = response.data;
       }).catch(function (error) {
-        _this.$toasted.global.error('Role does not exist!');
+        _this.$toasted.global.error('Rol no existe!');
         location.href = '/roles';
       }).then(function () {
         _this.loading = false;
@@ -67596,7 +67595,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submiting) {
         this.submiting = true;
         axios.put('/api/roles/update/' + this.role.id, this.role).then(function (response) {
-          _this2.$toasted.global.error('Updated role!');
+          _this2.$toasted.global.error('Rol actualizado correctamente!');
           location.href = '/roles';
         }).catch(function (error) {
           _this2.errors = error.response.data.errors;
@@ -67610,15 +67609,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submitingDestroy) {
         this.submitingDestroy = true;
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this role!",
+          title: "Esta seguro?",
+          text: "Una vez eliminado este rol, no podrá recuperarlo!",
           icon: "warning",
           buttons: true,
           dangerMode: true
         }).then(function (willDelete) {
           if (willDelete) {
             axios.delete('/api/roles/' + _this3.role.id).then(function (response) {
-              _this3.$toasted.global.error('Deleted role!');
+              _this3.$toasted.global.error('Rol eliminado!');
               location.href = '/roles';
             }).catch(function (error) {
               _this3.errors = error.response.data.errors;
@@ -67666,7 +67665,7 @@ var render = function() {
             { staticClass: "card-header px-0 mt-2 bg-transparent clearfix" },
             [
               _c("h4", { staticClass: "float-left pt-2" }, [
-                _vm._v("Edit Role")
+                _vm._v("Editar Rol")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-header-actions mr-1" }, [
@@ -67687,7 +67686,7 @@ var render = function() {
                       ? _c("i", { staticClass: "fas fa-spinner fa-spin" })
                       : _c("i", { staticClass: "fas fa-check" }),
                     _vm._v(" "),
-                    _c("span", { staticClass: "ml-1" }, [_vm._v("Save")])
+                    _c("span", { staticClass: "ml-1" }, [_vm._v("Guardar")])
                   ]
                 ),
                 _vm._v(" "),
@@ -67709,7 +67708,7 @@ var render = function() {
                       : _c("i", { staticClass: "far fa-trash-alt" }),
                     _vm._v(" "),
                     _c("span", { staticClass: "d-md-down-none ml-1" }, [
-                      _vm._v("Delete")
+                      _vm._v("Eliminar")
                     ])
                   ]
                 )
@@ -67726,7 +67725,7 @@ var render = function() {
               !_vm.loading
                 ? _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "form-group col-sm-9" }, [
-                      _c("label", [_vm._v("Role name")]),
+                      _c("label", [_vm._v("Nombre del rol")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -67767,7 +67766,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-sm-3" }, [
-                      _c("label", [_vm._v("Role ID")]),
+                      _c("label", [_vm._v("Rol ID")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -67793,7 +67792,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-sm-12" }, [
-                      _c("label", [_vm._v("Role slug")]),
+                      _c("label", [_vm._v("Identificador")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -67839,12 +67838,12 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "card-header px-0 bg-transparent" }, [
-            _c("strong", [_vm._v("Permissions")]),
+            _c("strong", [_vm._v("Permisos")]),
             _c("br"),
             _vm._v(" "),
             _c("small", { staticClass: "text-muted" }, [
               _vm._v(
-                "Enable or disable permissions and choose access to modules."
+                "Habilite o deshabilite permisos para acceder a modulos de la aplicación."
               )
             ]),
             _vm._v(" "),
@@ -67990,11 +67989,11 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "card-header px-0 bg-transparent" }, [
-            _c("strong", [_vm._v("Users")]),
+            _c("strong", [_vm._v("Usuarios")]),
             _c("br"),
             _vm._v(" "),
             _c("small", { staticClass: "text-muted" }, [
-              _vm._v("This is the list of users who use this role.")
+              _vm._v("Esta es la lista de usuarios con este rol.")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-header-actions" }, [
@@ -68080,7 +68079,7 @@ var staticRenderFns = [
       _c("br"),
       _vm._v(" "),
       _c("small", { staticClass: "text-muted" }, [
-        _vm._v("Update name and permissions of role.")
+        _vm._v("Actualizar nombre y permisos del rol")
       ])
     ])
   },
@@ -69267,7 +69266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get('/api/services/getServiceData/' + res[2]).then(function (response) {
         _this.service = response.data;
       }).catch(function (error) {
-        _this.$toasted.global.error('Service does not exist!');
+        _this.$toasted.global.error('Servicio no existe!');
         location.href = '/services';
       }).then(function () {
         _this.loading = false;
@@ -69279,7 +69278,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submiting) {
         this.submiting = true;
         axios.put('/api/services/update/' + this.service.id, this.service).then(function (response) {
-          _this2.$toasted.global.error('Updated service!');
+          _this2.$toasted.global.error('Servicio actualizado correctamente!');
           location.href = '/services';
         }).catch(function (error) {
           _this2.errors = error.response.data.errors;
@@ -69293,15 +69292,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.submitingDestroy) {
         this.submitingDestroy = true;
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this Service!",
+          title: "Esta seguro?",
+          text: "Una vez eliminado este servicio, no podrá recuperarlo!",
           icon: "warning",
           buttons: true,
           dangerMode: true
         }).then(function (willDelete) {
           if (willDelete) {
             axios.delete('/api/services/' + _this3.service.id).then(function (response) {
-              _this3.$toasted.global.error('Deleted service!');
+              _this3.$toasted.global.error('Servicio eliminado!');
               location.href = '/services';
             }).catch(function (error) {
               _this3.errors = error.response.data.errors;

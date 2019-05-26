@@ -3,37 +3,37 @@
     <div class="row justify-content-md-center">
       <div class="col-md-12 col-xl-9">
         <div class="card-header px-0 mt-2 bg-transparent clearfix">
-          <h4 class="float-left pt-2">Edit Role</h4>
+          <h4 class="float-left pt-2">Editar Rol</h4>
           <div class="card-header-actions mr-1">
             <a class="btn btn-primary" href="#" :disabled="submiting" @click.prevent="update">
               <i class="fas fa-spinner fa-spin" v-if="submiting"></i>
               <i class="fas fa-check" v-else></i>
-              <span class="ml-1">Save</span>
+              <span class="ml-1">Guardar</span>
             </a>
             <a class="card-header-action ml-1" href="#" :disabled="submitingDestroy" @click.prevent="destroy">
               <i class="fas fa-spinner fa-spin" v-if="submitingDestroy"></i>
               <i class="far fa-trash-alt" v-else></i>
-              <span class="d-md-down-none ml-1">Delete</span>
+              <span class="d-md-down-none ml-1">Eliminar</span>
             </a>
           </div>
         </div>
         <div class="card-header px-0 bg-transparent">
           <strong>General</strong><br>
-          <small class="text-muted">Update name and permissions of role.</small>
+          <small class="text-muted">Actualizar nombre y permisos del rol</small>
         </div>
         <div class="card-body px-0">
           <div class="row" v-if="!loading">
             <div class="form-group col-sm-9">
-              <label>Role name</label>
+              <label>Nombre del rol</label>
               <input type="text" class="form-control" :class="{'is-invalid': errors.display_name}" v-model="role.display_name" placeholder="Admin" autofocus>
               <div class="invalid-feedback" v-if="errors.display_name">{{errors.display_name[0]}}</div>
             </div>
             <div class="form-group col-sm-3">
-              <label>Role ID</label>
+              <label>Rol ID</label>
               <input type="text" class="form-control" v-model="role.id" readonly>
             </div>
             <div class="form-group col-sm-12">
-              <label>Role slug</label>
+              <label>Identificador</label>
               <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="role.name" placeholder="admin" readonly>
               <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
             </div>
@@ -43,8 +43,8 @@
           </content-placeholders>
         </div>
         <div class="card-header px-0 bg-transparent">
-          <strong>Permissions</strong><br>
-          <small class="text-muted">Enable or disable permissions and choose access to modules.</small>
+          <strong>Permisos</strong><br>
+          <small class="text-muted">Habilite o deshabilite permisos para acceder a modulos de la aplicación.</small>
           <div class="card-header-actions">
             <div class="float-left mr-2 d-sm-down-none">
               <small class="text-muted">{{role.permissions.length}} of {{permissionsCount}}</small>
@@ -78,8 +78,8 @@
           <content-placeholders-heading :img="true"/>
         </content-placeholders>
         <div class="card-header px-0 bg-transparent">
-          <strong>Users</strong><br>
-          <small class="text-muted">This is the list of users who use this role.</small>
+          <strong>Usuarios</strong><br>
+          <small class="text-muted">Esta es la lista de usuarios con este rol.</small>
           <div class="card-header-actions">
             <small class="text-muted mr-1 d-sm-down-none">{{role.users.length}}</small>
             <a class="card-header-action btn-minimize" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true">
@@ -141,7 +141,7 @@ export default {
         this.role = response.data
       })
       .catch(error => {
-        this.$toasted.global.error('Role does not exist!')
+        this.$toasted.global.error('Rol no existe!')
         location.href = '/roles'
       })
       .then(() => {
@@ -153,7 +153,7 @@ export default {
         this.submiting = true
         axios.put(`/api/roles/update/${this.role.id}`, this.role)
         .then(response => {
-          this.$toasted.global.error('Updated role!')
+          this.$toasted.global.error('Rol actualizado correctamente!')
           location.href = '/roles'
         })
         .catch(error => {
@@ -166,8 +166,8 @@ export default {
       if (!this.submitingDestroy) {
         this.submitingDestroy = true
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this role!",
+          title: "Esta seguro?",
+          text: "Una vez eliminado este rol, no podrá recuperarlo!",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -176,7 +176,7 @@ export default {
           if (willDelete) {
             axios.delete(`/api/roles/${this.role.id}`)
             .then(response => {
-              this.$toasted.global.error('Deleted role!')
+              this.$toasted.global.error('Rol eliminado!')
               location.href = '/roles'
             })
             .catch(error => {

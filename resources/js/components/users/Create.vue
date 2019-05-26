@@ -3,18 +3,18 @@
     <div class="row justify-content-md-center">
       <div class="col-md-9 col-xl-7">
         <div class="card-header px-0 mt-2 bg-transparent clearfix">
-          <h4 class="float-left pt-2">New User</h4>
+          <h4 class="float-left pt-2">Nuevo Usuario</h4>
           <div class="card-header-actions mr-1">
             <a class="btn btn-primary" href="#" :disabled="submiting" @click.prevent="create">
               <i class="fas fa-spinner fa-spin" v-if="submiting"></i>
               <i class="fas fa-check" v-else></i>
-              <span class="ml-1">Save</span>
+              <span class="ml-1">Guardar</span>
             </a>
           </div>
         </div>
         <div class="card-body px-0">
           <div class="form-group">
-            <label>Full Name</label>
+            <label>Nombre Completo</label>
             <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="user.name" placeholder="John Doe">
             <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
           </div>
@@ -68,7 +68,7 @@ export default {
         this.submiting = true
         axios.post(`/api/users/store`, this.user)
         .then(response => {
-          this.$toasted.global.error('Created user!')
+          this.$toasted.global.error('Usuario creado!')
           location.href = '/users'
         })
         .catch(error => {

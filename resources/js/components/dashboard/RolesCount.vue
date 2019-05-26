@@ -5,7 +5,7 @@
         <i class="icon-key"></i>
       </div>
       <div class="text-value">{{roles}}</div>
-      <small class="text-muted text-uppercase font-weight-bold">Roles created</small>
+      <small class="text-muted text-uppercase font-weight-bold">Roles creados</small>
     </div>
   </div>
 </template>

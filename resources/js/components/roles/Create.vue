@@ -3,7 +3,7 @@
     <div class="row justify-content-md-center">
       <div class="col-md-9 col-xl-7">
         <div class="card-header px-0 mt-2 bg-transparent clearfix">
-          <h4 class="float-left pt-2">New Role</h4>
+          <h4 class="float-left pt-2">Nuevo Rol</h4>
           <div class="card-header-actions mr-1">
             <a class="btn btn-primary" href="#" :disabled="submiting" @click.prevent="create">
               <i class="fas fa-spinner fa-spin" v-if="submiting"></i>
@@ -14,23 +14,23 @@
         </div>
         <div class="card-header px-0 bg-transparent">
           <strong>General</strong><br>
-          <small class="text-muted">Create a new role and choose the permissions so you can assign it to users.</small>
+          <small class="text-muted">Cree un nuevo rol y asigne los permisos que tendrán sus usuarios.</small>
         </div>
         <div class="card-body px-0">
           <div class="form-group">
-            <label>Role name</label>
+            <label>Nombre del rol</label>
             <input type="text" class="form-control" :class="{'is-invalid': errors.display_name}" v-model="role.display_name" placeholder="Admin" autofocus>
             <div class="invalid-feedback" v-if="errors.display_name">{{errors.display_name[0]}}</div>
           </div>
           <div class="form-group">
-            <label>Role slug</label>
+            <label>Identificador</label>
             <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="role.name" placeholder="admin" readonly>
             <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
           </div>
         </div>
         <div class="card-header px-0 bg-transparent">
-          <strong>Permissions</strong><br>
-          <small class="text-muted">Enable or disable permissions and choose access to modules.</small>
+          <strong>Permisos</strong><br>
+          <small class="text-muted">Habilite o deshabilite permisos para acceder a modulos de la aplicación.</small>
         </div>
         <div class="card-body">
           <form class="form-horizontal" v-if="!loading">
@@ -77,7 +77,7 @@ export default {
         this.submiting = true
         axios.post('/api/roles/store', this.role)
         .then(response => {
-          this.$toasted.global.error('Created role!')
+          this.$toasted.global.error('Rol creado exitosamente!')
           location.href = '/roles'
         })
         .catch(error => {

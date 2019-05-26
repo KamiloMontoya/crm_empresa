@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="card-header px-0 mt-2 bg-transparent clearfix">
-      <h4 class="float-left pt-2">Users</h4>
+      <h4 class="float-left pt-2">Usuarios</h4>
       <div class="card-header-actions mr-1">
-        <a class="btn btn-success" href="/users/create">New user</a>
+        <a class="btn btn-success" href="/users/create">Nuevo usuario</a>
       </div>
     </div>
     <div class="card-body px-0">
@@ -38,12 +38,12 @@
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'id' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'id' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th>
-              <a href="#" class="text-dark" @click.prevent="sort('name')">User</a>
+              <a href="#" class="text-dark" @click.prevent="sort('name')">Usuario</a>
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'name' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'name' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th>Roles</th>
             <th class="d-none d-sm-table-cell">
-              <a href="#" class="text-dark" @click.prevent="sort('created_at')">Registered</a>
+              <a href="#" class="text-dark" @click.prevent="sort('created_at')">Registro</a>
               <i class="mr-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th class=""></th>
@@ -103,10 +103,9 @@
       </div>
       <div class="no-items-found text-center mt-5" v-if="!loading && !users.length > 0">
         <i class="icon-magnifier fa-3x text-muted"></i>
-        <p class="mb-0 mt-3"><strong>Could not find any items</strong></p>
-        <p class="text-muted">Try changing the filters or add a new one</p>
+        <p class="mb-0 mt-3"><strong>No se encontraron resultados para la busqueda</strong></p>
         <a class="btn btn-success" href="/users/create" role="button">
-          <i class="fa fa-plus"></i>&nbsp; New User
+          <i class="fa fa-plus"></i>&nbsp; Nuevo Usuario
         </a>
       </div>
       <content-placeholders v-if="loading">

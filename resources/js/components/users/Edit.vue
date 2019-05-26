@@ -3,24 +3,24 @@
     <div class="row justify-content-md-center">
       <div class="col-md-9 col-xl-7">
         <div class="card-header px-0 mt-2 bg-transparent clearfix">
-          <h4 class="float-left pt-2">Edit User</h4>
+          <h4 class="float-left pt-2">Edición de Usuario</h4>
           <div class="card-header-actions mr-1">
             <a class="btn btn-primary" href="#" :disabled="submiting" @click.prevent="update">
               <i class="fas fa-spinner fa-spin" v-if="submiting"></i>
               <i class="fas fa-check" v-else></i>
-              <span class="ml-1">Save</span>
+              <span class="ml-1">Guardar</span>
             </a>
             <a class="card-header-action ml-1" href="#" :disabled="submitingDestroy" @click.prevent="destroy">
               <i class="fas fa-spinner fa-spin" v-if="submitingDestroy"></i>
               <i class="far fa-trash-alt" v-else></i>
-              <span class="d-md-down-none ml-1">Delete</span>
+              <span class="d-md-down-none ml-1">Eliminar</span>
             </a>
           </div>
         </div>
         <div class="card-body px-0">
           <div class="row" v-if="!loading">
             <div class="form-group col-md-9">
-              <label>Full Name</label>
+              <label>Nombre completo</label>
               <input type="text" class="form-control" :class="{'is-invalid': errors.name}" v-model="user.name" placeholder="John Doe">
               <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
             </div>
@@ -53,7 +53,7 @@
                 <small class="form-text text-danger" v-if="errors.roles">{{errors.roles[0]}}</small>
               </div>
               <div class="form-group">
-                <label class="col-form-label">Registered</label>
+                <label class="col-form-label">Registrado</label>
                 <p class="form-control-plaintext text-muted">{{user.created_at | moment("LLL")}}</p>
               </div>
             </div>
@@ -97,7 +97,7 @@ export default {
         this.user = response.data
       })
       .catch(error => {
-        this.$toasted.global.error('User does not exist!')
+        this.$toasted.global.error('Useario no existe!')
         location.href = '/users'
       })
       .then(() => {
@@ -118,7 +118,7 @@ export default {
         this.submiting = true
         axios.put(`/api/users/update/${this.user.id}`, this.user)
         .then(response => {
-          this.$toasted.global.error('Updated user!')
+          this.$toasted.global.error('Usuario actualizado correctamente!')
           location.href = '/users'
         })
         .catch(error => {
@@ -131,8 +131,8 @@ export default {
       if (!this.submitingDestroy) {
         this.submitingDestroy = true
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this user!",
+          title: "Esta seguro?",
+          text: "Una vez eliminado este usuario, no podrá recuperarlo!",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -141,7 +141,7 @@ export default {
           if (willDelete) {
             axios.delete(`/api/users/${this.user.id}`)
             .then(response => {
-              this.$toasted.global.error('Deleted user!')
+              this.$toasted.global.error('Borrar usuario!')
               location.href = '/users'
             })
             .catch(error => {

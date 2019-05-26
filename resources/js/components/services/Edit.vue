@@ -85,7 +85,7 @@ export default {
         this.service = response.data
       })
       .catch(error => {
-        this.$toasted.global.error('Service does not exist!')
+        this.$toasted.global.error('Servicio no existe!')
         location.href = '/services'
       })
       .then(() => {
@@ -98,7 +98,7 @@ export default {
         this.submiting = true
         axios.put(`/api/services/update/${this.service.id}`, this.service)
         .then(response => {
-          this.$toasted.global.error('Updated service!')
+          this.$toasted.global.error('Servicio actualizado correctamente!')
           location.href = '/services'
         })
         .catch(error => {
@@ -111,8 +111,8 @@ export default {
       if (!this.submitingDestroy) {
         this.submitingDestroy = true
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this Service!",
+          title: "Esta seguro?",
+          text: "Una vez eliminado este servicio, no podrá recuperarlo!",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -121,7 +121,7 @@ export default {
           if (willDelete) {
             axios.delete(`/api/services/${this.service.id}`)
             .then(response => {
-              this.$toasted.global.error('Deleted service!')
+              this.$toasted.global.error('Servicio eliminado!')
               location.href = '/services'
             })
             .catch(error => {
