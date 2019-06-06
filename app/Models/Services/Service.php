@@ -10,7 +10,7 @@ class Service extends Model
 	use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name', 'description', 'value', 'prefix'];
+    protected $fillable = ['name', 'description', 'value', 'value_nrc', 'iva', 'prefix'];
 
     public function contactHasService()
     {

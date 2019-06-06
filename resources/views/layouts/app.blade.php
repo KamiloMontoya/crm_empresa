@@ -28,7 +28,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js?v=5') }}" defer></script>
     
 
 
@@ -61,6 +60,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+     <link href="{{ asset('css/third/bootstrap-select/bootstrap-select.css') }}" rel="stylesheet">
+   <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.css"> -->
 </head>
 <body class="app header-fixed sidebar-fixed sidebar-lg-show">
     <div id="app">
@@ -74,8 +76,11 @@
     </div>
 
     @section('scripts')
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="{{ asset('js/app.js?v=6') }}" ></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="{{ asset('js/third/bootstrap-select/bootstrap-select.js') }}"></script>
         <script type="text/javascript">
+            $.fn.selectpicker.Constructor.BootstrapVersion = '4';
             $(function () {
               $('[data-toggle="tooltip"]').tooltip()
             })

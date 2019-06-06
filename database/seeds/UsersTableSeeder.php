@@ -64,6 +64,6 @@ class UsersTableSeeder extends Seeder
 
         // Generate avatar to defautl user NO correr en HEROKU
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
-        Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+        Storage::disk('public')::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
     }
 }

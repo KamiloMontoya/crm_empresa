@@ -42,13 +42,13 @@
               <i class="ml-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'name' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'name' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th class="d-none d-sm-table-cell">
-              <a href="#" class="text-dark" @click.prevent="sort('value')">Valor</a>
+              <a href="#" class="text-dark" @click.prevent="sort('value')">Valor Mensualidad</a>
               <i class="ml-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'value' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'value' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             
             <th class="d-none d-sm-table-cell">
-              <a href="#" class="text-dark" @click.prevent="sort('created_at')">Fecha de Creación</a>
-              <i class="ml-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'created_at' && filters.orderBy.direction == 'desc'}"></i>
+              <a href="#" class="text-dark" @click.prevent="sort('iva')">IVA</a>
+              <i class="ml-1 fas" :class="{'fa-long-arrow-alt-down': filters.orderBy.column == 'iva' && filters.orderBy.direction == 'asc', 'fa-long-arrow-alt-up': filters.orderBy.column == 'iva' && filters.orderBy.direction == 'desc'}"></i>
             </th>
             <th class=""></th>
           </tr>
@@ -58,9 +58,7 @@
             <td class="d-none d-sm-table-cell">{{service.id}}</td>
             <td class="">{{service.name}}</td>
             <td class="d-none d-sm-table-cell">{{service.value}}</td>
-            <td class="d-none d-sm-table-cell">
-              <small>{{service.created_at | moment("LL")}}</small> - <small class="text-muted">{{service.created_at | moment("LT")}}</small>
-            </td>
+            <td class="d-none d-sm-table-cell">{{service.iva}} %</td>
             <td class="">
               <a href="#" class="text-muted"><i class="fas fa-pencil-alt"></i></a>
             </td>

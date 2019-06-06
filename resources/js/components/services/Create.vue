@@ -24,9 +24,21 @@
             <div class="invalid-feedback" v-if="errors.email">{{errors.description[0]}}</div>
           </div>
           <div class="form-group">
-            <label>Valor [$]</label>
-            <input type="text" class="form-control" :class="{'is-invalid': errors.value}" v-model="service.value">
+            <label>Valor mensualidad (MRC) [$]</label>
+            <input type="text" class="form-control" :class="{'is-invalid': errors.value}" v-model="service.value" @keypress="isNumber($event)">
             <div class="invalid-feedback" v-if="errors.password">{{errors.value[0]}}</div>
+          </div>
+
+           <div class="form-group">
+            <label>Iva mensualidad  [$]</label>
+            <input type="text" class="form-control" :class="{'is-invalid': errors.iva}" v-model="service.iva" @keypress="isNumber($event)">
+            <div class="invalid-feedback" v-if="errors.password">{{errors.iva[0]}}</div>
+          </div>
+
+          <div class="form-group">
+            <label>Valor instalación (NRC) [$]</label>
+            <input type="text" class="form-control" :class="{'is-invalid': errors.value_nrc}" v-model="service.value_nrc" @keypress="isNumber($event)">
+            <div class="invalid-feedback" v-if="errors.password">{{errors.value_nrc[0]}}</div>
           </div>
           <div class="form-group">
             <label>Prefijo (Usado para la generación de CUS)</label>
@@ -53,6 +65,15 @@ export default {
     
   },
   methods: {
+    isNumber: function(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+        evt.preventDefault();;
+      } else {
+        return true;
+      }
+    },
     create () {
       if (!this.submiting) {
         this.submiting = true

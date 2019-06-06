@@ -39,6 +39,8 @@ class ServiceController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'value' => 'required|numeric',
+            'value_nrc' => 'required|numeric',
+            'iva' => 'required|numeric',
             'prefix' => 'required|string'
         ]);
 
@@ -60,6 +62,8 @@ class ServiceController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'value' => 'required|numeric',
+            'value_nrc' => 'required|numeric',
+            'iva' => 'required|numeric',
             'prefix' => 'required|string'
         ]);
 
@@ -67,6 +71,8 @@ class ServiceController extends Controller
         $service->name = $request->name;
         $service->description = $request->description;
         $service->value = $request->value;
+        $service->value_nrc = $request->value_nrc;
+        $service->iva = $request->iva;
         $service->prefix = strtoupper($request->prefix);
 
         $service->save();

@@ -35,7 +35,7 @@ class ProfileController extends Controller
         $user->save();
 
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
-        Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+        $res = Storage::disk('public')->put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
 
         return $user;
     }
@@ -63,7 +63,7 @@ class ProfileController extends Controller
     public function uploadAvatarAuthUser(Request $request)
     {
         $upload = new Upload();
-        $avatar = $upload->upload($request->file, 'avatars/'.Auth::id())->resize(200, 200)->getData();
+        $avatar = $upload->upload($request->file, 'public/avatars/'.Auth::id())->resize(200, 200)->getData();
 
         $user = User::find(Auth::id());
         $user->avatar = $avatar['basename'];

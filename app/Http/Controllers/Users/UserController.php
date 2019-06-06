@@ -54,7 +54,7 @@ class UserController extends Controller
         $user->assignRole($rolesNames);
 
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
-        Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+        Storage::disk('public')->put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
 
         return $user;
     }
@@ -72,7 +72,7 @@ class UserController extends Controller
 
         if ($user->name != $request->name) {
             $avatar = Avatar::create($request->name)->getImageObject()->encode('png');
-            Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+            $resp = Storage::disk('public')->put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
             $user->name = $request->name;
         }
         if ($user->email != $request->email) {
