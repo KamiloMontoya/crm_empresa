@@ -82,7 +82,7 @@
         <script type="text/javascript">
             $.fn.selectpicker.Constructor.BootstrapVersion = '4';
             $(function () {
-              $('[data-toggle="tooltip"]').tooltip()
+                $('[data-toggle="tooltip"]').tooltip()
             })
         </script>
     @show

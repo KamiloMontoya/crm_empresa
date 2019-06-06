@@ -77,8 +77,13 @@
 @section('scripts')
     @parent
         <script type="text/javascript">
-
-
+            $(function () {
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                    $('.selectpicker').selectpicker('mobile');
+                }
+                else {
+                    $('.selectpicker').selectpicker({});
+                }
+            })
         </script>
-
 @endsection
