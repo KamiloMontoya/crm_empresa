@@ -3,7 +3,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['namespace' => 'Users'], function() {
         // views
         Route::group(['prefix' => 'users'], function() {
-            Route::view('/', 'users.index')->middleware('permission:read-users');
+            Route::view('/', 'users.index')->name('users.index')->middleware('permission:read-users');
             Route::view('/create', 'users.create')->middleware('permission:create-users');
             Route::view('/{user}/edit', 'users.edit')->middleware('permission:update-users');
         });

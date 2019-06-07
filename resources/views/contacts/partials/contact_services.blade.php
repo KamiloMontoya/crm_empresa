@@ -40,6 +40,8 @@
 								            <td>{{ $chs->service->name }}</td>
 								            <td class="d-none d-sm-table-cell">{{ $chs->service->value }}</td>
 								            <td>
+								            	<button class="btn btn-sm btn-warning generate-installation-order" data-toggle="tooltip" data-cus="{{$chs->cus}}" title="Generar Orden de Instalación" ><i class="fa fa-briefcase "></i></button>
+
 												<form action="{{ route('contact_has_services.destroy', $chs->id) }}" class="delete_contactService" method="POST" style="display: inline;">
 							                      <input type="hidden" name="_method" value="DELETE">
 							                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -158,7 +160,7 @@
 					var form = $(this);
 					swal({
 	      				title: "Está seguro?",
-					    text: "Desea eliminar el servicio contrataco",
+					    text: "Desea eliminar el servicio contratado",
 					    icon: "warning",
 					    buttons: [
 					        'No, cancelar!',
@@ -170,6 +172,64 @@
 					       	form.unbind('submit').submit(); // <--- submit form programmatically
 					      } 
 					})
+				});
+
+				$(".generate-installation-order").click(function(event) {
+					var element = $(this);
+
+					var cus = element.attr('data-cus');
+
+					if (cus){
+						swal({
+		      				title: "Está seguro?",
+						    text: "Desea generar una orden de instalación para este servicio?",
+						    icon: "warning",
+						    buttons: [
+						        'No, cancelar!',
+						        'Si, Estoy seguro!'
+						    ],
+						    dangerMode: true,
+						}).then(function(isConfirm) {
+					    	if (isConfirm) {
+					    		swal( {
+				               		type: "info",
+									text: "Procesando",
+									title: "Por favor espere",
+								    button: false,
+								});
+
+					       		$.ajax({
+						           type: "GET",
+						           url: "{{ route('installation_orders.store') }}",
+						           dataType: "JSON",
+						           data: {format: "json", cus: cus }, // serializes the form's elements.
+						           success: function(data)
+						           {
+						               swal( {
+						               		type: "success",
+											text: "Guardado exitoso",
+											title: "Por favor espere",
+										    button: false,
+										});
+						               location.reload()
+						           },
+						           error: function(data)
+						           {
+							           	var message = '';
+
+							           	if (data.message){
+							           		message = data.message
+							           	}
+
+							           	if (data.responseJSON){
+							           		message = data.responseJSON.message
+							           	}
+						               swal('Error', message, 'error');
+						           }
+						        });
+					      	} 
+						});
+					}
 				});
 			});
 

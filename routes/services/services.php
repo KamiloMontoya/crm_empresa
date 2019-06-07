@@ -3,7 +3,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['namespace' => 'Services'], function() {
         // views
         Route::group(['prefix' => 'services'], function() {
-            Route::view('/', 'services.index')->middleware('permission:read-services');
+            Route::view('/', 'services.index')->name('services.index')->middleware('permission:read-services');
             Route::view('/create', 'services.create')->middleware('permission:create-services');
             Route::view('/{service}/edit', 'services.edit')->middleware('permission:update-services');
         });

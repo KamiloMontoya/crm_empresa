@@ -32,5 +32,7 @@ require __DIR__ . '/modules/modules.php';
 require __DIR__ . '/services/services.php';
 require __DIR__ . '/contacts/contacts.php';
 require __DIR__ . '/contacts/contact_has_services.php';
+require __DIR__ . '/installation_orders/installation_orders.php';
+
 
 

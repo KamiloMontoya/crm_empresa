@@ -18,5 +18,7 @@ class ContactHasService extends Model
     {
         return $this->hasOne(\App\Models\Services\Service::class,  'id', 'service_id');
     }
+
+  
    
 }
