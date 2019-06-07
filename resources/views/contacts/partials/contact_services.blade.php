@@ -207,11 +207,9 @@
 						           {
 						               swal( {
 						               		type: "success",
-											text: "Guardado exitoso",
-											title: "Por favor espere",
-										    button: false,
+											title: "Guardado exitoso",
+											text: "Se ha generado una orden de instalación para este CUS"
 										});
-						               location.reload()
 						           },
 						           error: function(data)
 						           {
