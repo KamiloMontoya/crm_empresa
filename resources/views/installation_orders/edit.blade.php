@@ -13,11 +13,14 @@
 	            </div>
 	        </div>
 	        <div class="card-body px-0">
-	        	<form id="form" action="{{ route('installation_orders.update', $installation_order->id) }}" method="POST">
+	        	<form id="form" action="{{ route('installation_orders.update', $installation_order->id) }}" method="POST" enctype="multipart/form-data">
 	        		<input type="hidden" name="_method" value="PUT">
 	        		@include('installation_orders.partials.form', ['installation_order' => $installation_order] )
 			    </form>
 	        </div>
+
+
+	        @include('installation_orders.partials.history', ['installation_order' => $installation_order] )
 
 	      </div>
 	    </div>
@@ -35,9 +38,6 @@
 					event.preventDefault();
 				  	$("#form").submit();
 				});
-
-				
-                
 			});
 		</script>
 

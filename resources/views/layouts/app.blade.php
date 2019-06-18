@@ -79,6 +79,7 @@
         <script src="{{ asset('js/app.js?v=6') }}" ></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="{{ asset('js/third/bootstrap-select/bootstrap-select.js') }}"></script>
+        <script src="{{ asset('js/third/tiny_mce/tiny_mce.js') }}"></script>
         <script type="text/javascript">
             $.fn.selectpicker.Constructor.BootstrapVersion = '4';
             $(function () {

@@ -3,28 +3,44 @@
 <div class="row">
     <div class="col-12">
         <div class="form-group">
-            <b> CUS: </b> {{ $installation_order->contactHasService->cus }}
-
+            <small><b> CUS: </b> {{ $installation_order->contactHasService->cus }}</small>
         </div>
     </div>
-	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
+	<div class="col-12 col-sm-5 col-md-5 col-lg-5">
 		
         @if($installation_order->contactHasService->Contact)
-        <div class="form-group">
-            <b> Cliente: </b> {{ $installation_order->contactHasService->Contact->first_name }} {{ $installation_order->contactHasService->Contact->last_name }}
-        </div>
-        <div class="form-group">
-            <b> Dirección: </b> {{ $installation_order->contactHasService->Contact->address }}
-        </div>
-        <div class="form-group">
-            <b> Ciudad: </b> {{ $installation_order->contactHasService->Contact->city }} 
-        </div>
+            <div class="form-group">
+                <small><b> Cliente: </b> {{ $installation_order->contactHasService->Contact->first_name }} {{ $installation_order->contactHasService->Contact->last_name }}</small>
+                <br>
+                <small><b> Dirección: </b> {{ $installation_order->contactHasService->Contact->address }}</small>
+                <br>
+                <small><b> Ciudad: </b> {{ $installation_order->contactHasService->Contact->city }} </small>
+            </div>
         @endif
 
+        
+
+	</div>
+	
+	<div class="col-12 col-sm-7 col-md-7 col-lg-7">
+		@if($installation_order->contactHasService->Contact)
+            <div class="form-group">
+                <small><b> Telefono: </b> {{ $installation_order->contactHasService->Contact->phone }} </small>
+                <br>
+                <small><b> Celular: </b> {{ $installation_order->contactHasService->Contact->celphone }}</small>
+                <br>
+                <small><b> Email: </b> {{ $installation_order->contactHasService->Contact->email }}</small>
+            </div>
+        @endif
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12">
         <div class="form-group">
-            <label>Estado</label>
+            <label><b>Estado</b></label>
             
-            <select data-live-search="true" class="form-control  @if($errors->has('status')) is-invalid @endif" name="status" >
+            <select data-live-search="true" class="form-control  @if($errors->has('comment')) is-invalid @endif" name="status" >
                 <?php $status_value = isset($installation_order) ? $installation_order->status :  old('status'); ?>
                 @foreach(  \App\Models\InstallationOrders\InstallationOrder::getStatus() as $key => $value )
                     <option value="{{ $value }}" {{ ($status_value == "$value") ? 'selected="true"' : '' }}> {{ $value }}</option>
@@ -36,20 +52,40 @@
             @endif
         </div>
 
-	</div>
-	
-	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
-		@if($installation_order->contactHasService->Contact)
-            <div class="form-group">
-                <b> Telefono: </b> {{ $installation_order->contactHasService->Contact->phone }} 
-            </div>
-            <div class="form-group">
-                <b> Celular: </b> {{ $installation_order->contactHasService->Contact->celphone }}
-            </div>
-            <div class="form-group">
-                <b> Email: </b> {{ $installation_order->contactHasService->Contact->email }}
-            </div>
-        @endif
+         
+    </div>
+    <div class="col-12">
+
+        <div class="form-group">
+            <label><b>Comentario</b></label>
+            
+            <textarea type="text" class="form-control @if($errors->has('comment')) is-invalid @endif" name="comment" value="{{  old('comment') }}" placeholder=""> </textarea>
+
+            @if($errors->has("comment"))
+                <div class="invalid-feedback" style="display:block">{{ $errors->first("comment") }}</div>
+            @endif
+        </div>
+        
+        <div class="form-group">
+            <label><b>Adjuntos</b></label>
+            <br>
+            <input name="file_one" type="file"  style="font-size: 0.8em"/>
+            <br>
+            <input name="file_two" type="file"  style="font-size: 0.8em" />
+        </div> 
+
+       
 
     </div>
 </div>
+
+
+@section('scripts')
+
+    @parent
+        <script>
+            tinymce.init({
+                selector: 'textarea',  // change this value according to your HTML
+                plugins : ''
+            });</script>
+@endsection

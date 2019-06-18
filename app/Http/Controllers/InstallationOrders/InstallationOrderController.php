@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\InstallationOrders;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Response;
 use App\Http\Controllers\Controller;
 use App\Models\InstallationOrders\InstallationOrder;
+use App\Models\InstallationOrders\HistoryInstallationOrder;
 use App\Models\ContactHasServices\ContactHasService;
+
+use App\Http\Helpers\Upload;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -134,10 +139,50 @@ class InstallationOrderController extends Controller
                     ->withInput();
         }else{
             $installation_order = InstallationOrder::findOrFail($id);
-
-            $installation_order->status = $request->input("status"); 
             
-            $installation_order->save();
+            if ($installation_order ){
+
+                /*========================================================
+                =            Creando registro en el historial            =
+                ========================================================*/
+                
+                    $log = new HistoryInstallationOrder();
+                    $log->status = $request->input("status");
+                    $log->description = $request->input("comment");
+                    $log->user_id = Auth::id();
+                    $log->installation_order_id = $installation_order->id;
+                    $log->save();
+                
+                /*=====  End of Creando registro en el historial  ======*/
+                
+                /*============================================
+                =            Almacenando archivos            =
+                ============================================*/
+                
+                    if ($request->file_one){
+                        $name = $request->file('file_one')->getClientOriginalName();
+                        $upload = new Upload();
+                        $file = $upload->uploadAs($request->file_one, 'public/installation_orders/'.$installation_order->id.'/'.$log->id, $name )->getData();
+                    }
+
+                    if ($request->file_two){
+                        $name = $request->file('file_two')->getClientOriginalName();
+                        $upload = new Upload();
+                        $file = $upload->uploadAs($request->file_two, 'public/installation_orders/'.$installation_order->id.'/'.$log->id, $name )->getData();
+                    }
+                
+                /*=====  End of Almacenando archivos  ======*/
+                
+                
+
+                $installation_order->status = $request->input("status"); 
+                $installation_order->save();
+            }
+
+
+            
+            
+
         }
 
         return redirect()->route('installation_orders.index')->with('message', 'Orden actualizada correctamente.');

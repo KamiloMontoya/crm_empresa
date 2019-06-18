@@ -33,6 +33,25 @@ class Upload {
     }
 
     /**
+     * [uploadAs description]
+     * @param  [file]   $file  [description]
+     * @param  [name]   $name  [description]
+     * @param  [string] $path  [description]
+     * @return [obj]    $this  [description]
+     */
+    public function uploadAs($file, $path, $name)
+    {
+        $this->file = $file;
+
+        $path = $this->file->storeAs($path, $name);
+
+        $this->getMeta($path);
+
+        return $this;
+    }
+
+
+    /**
      * [uploadTemp description]
      * @param  [file] $file [description]
      * @return [obj]  $this [description]

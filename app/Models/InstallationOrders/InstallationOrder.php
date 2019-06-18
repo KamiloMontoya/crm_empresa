@@ -18,6 +18,12 @@ class InstallationOrder extends Model
         return $this->hasOne(\App\Models\ContactHasServices\ContactHasService::class,  'id', 'contact_has_service_id');
     }
 
+
+    public function getHistory()
+    {
+        return $this->hasMany(\App\Models\InstallationOrders\HistoryInstallationOrder::class, 'installation_order_id', 'id')->orderBy('created_at', 'DESC');
+    }
+
     public static  function getStatus()
     {
         return array(
