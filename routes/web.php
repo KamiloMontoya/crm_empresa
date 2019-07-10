@@ -33,6 +33,8 @@ require __DIR__ . '/services/services.php';
 require __DIR__ . '/contacts/contacts.php';
 require __DIR__ . '/contacts/contact_has_services.php';
 require __DIR__ . '/installation_orders/installation_orders.php';
+require __DIR__ . '/installation_orders/installation_orders_statuses.php';
+require __DIR__ . '/promotions/promotions.php';
 
 
 

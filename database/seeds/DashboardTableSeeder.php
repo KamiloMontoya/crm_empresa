@@ -12,10 +12,13 @@ class DashboardTableSeeder extends Seeder
     public function run()
     {
         // Module
-        $moduleId = DB::table('modules')->insertGetId([
-            'name' => 'dashboard',
-            'display_name' => 'Dashboard',
-            'icon' => 'icon-speedometer'
-        ]);
+        $module = DB::table('modules')->where('name', 'dashboard')->first();
+        if(!$module){
+            $module = DB::table('modules')->create([
+                'name' => 'dashboard',
+                'display_name' => 'Dashboard',
+                'icon' => 'icon-speedometer'
+            ]);
+        }
     }
 }

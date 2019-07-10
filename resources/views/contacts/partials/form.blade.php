@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
 		<div class="form-group">
-            <label>Nombre</label>
+            <label>Nombre (*)</label>
             <input type="text" class="form-control @if($errors->has('first_name')) is-invalid @endif" name="first_name" value="{{ isset($contact) ? $contact->first_name : old('first_name') }}" placeholder="Nombre">
             @if($errors->has("first_name"))
                 <div class="invalid-feedback" style="display:block">{{ $errors->first("first_name") }}</div>
@@ -10,7 +10,7 @@
         </div>
 
         <div class="form-group">
-            <label>Email</label>
+            <label>Email (*)</label>
             <input type="email" class="form-control @if($errors->has('email')) is-invalid @endif" name="email" value="{{ isset($contact) ? $contact->email : old('email') }}" placeholder="Email">
             @if($errors->has("email"))
                 <div class="invalid-feedback" style="display:block">{{ $errors->first("email") }}</div>
@@ -41,32 +41,53 @@
             @endif
         </div>
 
+
+        <div class="form-group">
+            <label>Referido por:</label>
+            <input type="text" class="form-control only-numbers  @if($errors->has('referred_by')) is-invalid @endif" name="referred_by" value="{{ isset($contact) ? $contact->referred_by :  old('referred_by') }}" placeholder="Doc de identidad"  {{ isset($contact) ? ($contact->referred_by ? 'readonly' : '' ): '' }} >
+            @if($errors->has("referred_by"))
+                <div class="invalid-feedback" style="display:block">{{ $errors->first("referred_by") }}</div>
+            @endif
+
+            @if(isset($referred_by))
+                <p>{{ $referred_by->first_name.' '.$referred_by->last_name.' ('.$referred_by->email.')'  }}</p>
+            @endif
+
+        </div>
+
+
 	</div>
 	
 	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
 		<div class="form-group">
-            <label>Apellido</label>
+            <label>Apellido (*)</label>
             <input type="text" class="form-control @if($errors->has('last_name')) is-invalid @endif" name="last_name" value="{{ isset($contact) ? $contact->last_name :  old('last_name') }}" placeholder="Apellido">
             @if($errors->has("last_name"))
                 <div class="invalid-feedback" style="display:block">{{ $errors->first("last_name") }}</div>
             @endif
         </div>
 	
+        <div class="form-group">
+            <label>Documento de identidad (*)</label>
+            <input type="text" class="form-control only-numbers @if($errors->has('dni')) is-invalid @endif" name="dni" value="{{ isset($contact) ? $contact->dni :  old('dni') }}" placeholder="">
+            @if($errors->has("dni"))
+                <div class="invalid-feedback" style="display:block">{{ $errors->first("dni") }}</div>
+            @endif
+        </div>
+		
+        <div class="form-group">
+            <label>Celular (*)</label>
+            <input type="text" class="form-control @if($errors->has('celphone')) is-invalid @endif" name="celphone" value="{{  isset($contact) ? $contact->celphone : old('celphone') }}" placeholder="">
+            @if($errors->has("celphone"))
+                <div class="invalid-feedback" style="display:block">{{ $errors->first("celphone") }}</div>
+            @endif
+        </div>
 
-		<div class="form-group">
+        <div class="form-group">
             <label>Telefono</label>
             <input type="text" class="form-control @if($errors->has('phone')) is-invalid @endif" name="phone" value="{{ isset($contact) ? $contact->phone :  old('phone') }}" placeholder="">
             @if($errors->has("phone"))
                 <div class="invalid-feedback" style="display:block">{{ $errors->first("phone") }}</div>
-            @endif
-        </div>
-
-
-        <div class="form-group">
-            <label>Celular</label>
-            <input type="text" class="form-control @if($errors->has('celphone')) is-invalid @endif" name="celphone" value="{{  isset($contact) ? $contact->celphone : old('celphone') }}" placeholder="">
-            @if($errors->has("celphone"))
-                <div class="invalid-feedback" style="display:block">{{ $errors->first("celphone") }}</div>
             @endif
         </div>
 
@@ -83,7 +104,7 @@
                 }
                 else {
                     $('.selectpicker').selectpicker({});
-                }
-            })
+                }  
+            });
         </script>
 @endsection

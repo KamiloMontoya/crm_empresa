@@ -11,13 +11,13 @@ class FakerTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 50)->create()->each(function ($user) {
+        // factory(App\User::class, 50)->create()->each(function ($user) {
 
-            $user->assignRole('user');
+        //     $user->assignRole('user');
 
-            $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
-            Storage::disk('public')->put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+        //     $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
+        //     Storage::disk('public')->put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
 
-        });
+        // });
     }
 }

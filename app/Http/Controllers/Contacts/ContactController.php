@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contacts\Contact;
 
 use Illuminate\Support\Facades\Validator;
+use App\Rules\ReferredBy;
 
 
 class ContactController extends Controller
@@ -29,6 +30,10 @@ class ContactController extends Controller
             $contacts->where('last_name', "LIKE", '%'.$request->input("last_name").'%');
         }
 
+        if ($request->input("dni")){
+            $contacts->where('dni', "LIKE", '%'.$request->input("dni").'%');
+        }
+
         return view('contacts.index', ['contacts' => $contacts->paginate(10), 'request' => $request->all()] );
     }
 
@@ -39,8 +44,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $contacts = \DB::table('contacts')->get();
-        return view('contacts.create', ['contacts' => $contacts]);
+        return view('contacts.create');
     }
 
 
@@ -69,6 +73,8 @@ class ContactController extends Controller
             $contact->celphone = $request->input("celphone"); 
             $contact->address = $request->input("address"); 
             $contact->city = $request->input("city"); 
+            $contact->dni = $request->input("dni");
+            $contact->referred_by = $request->input("referred_by"); 
             $contact->save();
         }
 
@@ -86,7 +92,12 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
 
-        return view('contacts.edit', ['contact' => $contact]);
+        $referred_by = null;
+        if ($contact->referred_by){
+            $referred_by = Contact::where('dni', '=',$contact->referred_by )->first();
+        }
+
+        return view('contacts.edit', ['contact' => $contact, 'referred_by' => $referred_by]);
     }
 
     /**
@@ -114,7 +125,8 @@ class ContactController extends Controller
             $contact->celphone = $request->input("celphone"); 
             $contact->address = $request->input("address"); 
             $contact->city = $request->input("city"); 
-            
+            $contact->dni = $request->input("dni"); 
+            $contact->referred_by = $request->input("referred_by"); 
             $contact->save();
         }
 
@@ -127,12 +139,17 @@ class ContactController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:contacts,email',
-            'celphone' => 'required'
+            'dni' => 'required|integer|unique:contacts,dni',
+            'celphone' => 'required',
+            'referred_by' => [new ReferredBy]
         ];
 
         if ( $id ){
             $rules['email'] = $rules['email'] .','. $id. ',id' ;
+            $rules['dni'] = $rules['dni'] .','. $id. ',id' ;
         }
+
+
         return Validator::make($data, $rules);
     }
 }

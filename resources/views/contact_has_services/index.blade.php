@@ -83,7 +83,7 @@
 
 			            
 			            <td >
-			              <a href="{{ route('contacts.edit', $chs->contact_id) }}" class="text-muted"><i class="fas fa-pencil-alt"></i></a>
+			              <a href="{{ route('contact_has_services.edit', $chs->id) }}" class="text-muted"><i class="fas fa-pencil-alt"></i></a>
 			            </td>
 			        </tr>
 			        @endforeach

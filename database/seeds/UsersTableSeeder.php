@@ -14,14 +14,19 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         // Module
-        $moduleId = DB::table('modules')->insertGetId([
-            'name' => 'users',
-            'display_name' => 'Users',
-            'icon' => 'icon-people'
-        ]);
+        $module = DB::table('modules')->where('name', 'users')->first();
+        if(!$module){
+            $module = DB::table('modules')->insert([
+                'name' => 'users',
+                'display_name' => 'Users',
+                'icon' => 'icon-people'
+            ]);
+        }
+        $module = DB::table('modules')->where('name', 'users')->first();
+        $moduleId = $module->id;
 
         // Permissions
-        DB::table('permissions')->insert([
+        $permissions = [
             [
                 'name' => 'read-users',
                 'display_name' => 'Read',
@@ -46,24 +51,37 @@ class UsersTableSeeder extends Seeder
                 'guard_name' => 'web',
                 'module_id' => $moduleId
             ]
-        ]);
+        ];
+
+        foreach ($permissions as $permission_data) {
+            $_permision = DB::table('permissions')->where('name',  $permission_data['name'])->first();
+            if (!$_permision ){
+                Permission::create($permission_data);
+            }
+        }
+
 
         // Assign permissions to admin role
         $admin = Role::findByName('admin');
         $admin->givePermissionTo(Permission::all());
 
         // Create default user
-        $user = \App\User::create([
-            'name' => 'admin',
-            'email' => 'admin@sumernet.com',
-            'password' => bcrypt('admin@sumernet.com'),
-            'avatar' => 'avatar.png'
-        ]);
-        // Assign admin role to default user
-        $user->assignRole('admin');
+        $user = \App\User::where('email', 'admin@sumernet.com')->first();
 
-        // Generate avatar to defautl user NO correr en HEROKU
-        $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
-        Storage::disk('public')::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+        if(!$user){
+            $user = \App\User::create([
+                'name' => 'admin',
+                'email' => 'admin@sumernet.com',
+                'password' => bcrypt('admin@sumernet.com'),
+                'avatar' => 'avatar.png'
+            ]);
+            // Assign admin role to default user
+            $user->assignRole('admin');
+
+             // Generate avatar to defautl user NO correr en HEROKU
+            $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
+            Storage::disk('public')::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+        }
+       
     }
 }

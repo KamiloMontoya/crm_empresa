@@ -34,9 +34,13 @@
 	@parent
 		<script type="text/javascript">
 			$(document).ready(function() {
+				var submiting_form = false;
 				$( "#submit-form" ).click(function(event) {
 					event.preventDefault();
-				  	$("#form").submit();
+					if (!submiting_form){
+						submiting_form = true;
+						$("#form").submit();
+					}
 				});
 			});
 		</script>

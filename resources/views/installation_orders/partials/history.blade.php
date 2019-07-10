@@ -1,18 +1,20 @@
 
 <div class="row ">
 	<div class="col-12">
-		<div class="card-header px-0 bg-transparent">
-			<strong>Historial de cambios</strong><br> 
-			<small class="text-muted">Vea el hitorial de cambios que ha sufrido la orden de instalación</small> 
+		
+		<a href="#" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true" class="card-header-action btn-minimize">
+			<div class="card-header px-0 bg-transparent">
+				<strong>Historial de cambios</strong><br> 
+				<small class="text-muted">Vea el historial de cambios que ha sufrido la orden de instalación</small> 
 
-			<div class="card-header-actions">
-				<div class="float-left mr-2 d-sm-down-none"><small class="text-muted">{{ $installation_order->getHistory->count() }} cambios</small> 
-					
-				</div> 
-				<a href="#" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true" class="card-header-action btn-minimize"><i class="icon-arrow-down"></i></a>
+				<div class="card-header-actions">
+					<div class="float-left mr-2 d-sm-down-none"><small class="text-muted">{{ $installation_order->getHistory->count() }} cambios</small> 
+						
+					</div> 
+					<i class="icon-arrow-down"></i>
+				</div>
 			</div>
-		</div>
-
+		</a>
 
 		<div id="collapseHistory" class=" collapse">
 			<div class="accordion" id="accordionExample">

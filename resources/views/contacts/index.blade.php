@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
 	    <div class="card-header px-0 mt-2 bg-transparent clearfix">
-		    <h4 class="float-left pt-2">Contactos</h4>
+		    <h4 class="float-left pt-2">Clientes (contactos)</h4>
 		    <div class="card-header-actions mr-1">
-		        <a class="btn btn-success" href="/contacts/create">Nuevo contacto</a>
+		        <a class="btn btn-success" href="{{ route('contacts.create') }}">Nuevo</a>
 		    </div>
 	    </div>
 
@@ -48,12 +48,20 @@
 				    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
 				    	{!!  Form::model($request,['route' => 'contacts.index', 'method' => 'GET']) !!}
 				        <div class="card-body">
-						   	<div class="row justify-content-between">
+						   	<div class="row">
 						        <div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
 							        {!!  Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Nombre']) !!}
+							        <br>
 						        </div>
 						       	<div class="col-12 col-sm-6 col-md-6 col-lg-6">
 							        {!!  Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Apellido']) !!}
+							        <br>
+						        </div>
+						    </div>
+						    <div class="row">
+						        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+						        	
+							        {!!  Form::text('dni', null, ['class' => 'form-control', 'placeholder' => 'Cédula de Ciudadanía']) !!}
 						        </div>
 						    </div>
 				        </div>

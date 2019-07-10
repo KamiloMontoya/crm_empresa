@@ -15,10 +15,13 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfileTableSeeder::class);
         $this->call(DashboardTableSeeder::class);
         $this->call(ServiceTableSeeder::class);
-
-
-        $this->call(UsersTableSeeder::class);
         $this->call(CityTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(ContactTableSeeder::class);
+        $this->call(ContactHasServicesTableSeeder::class);
+        $this->call(InstallationOrderTableSeeder::class);
+        $this->call(InstallationOrderStatusTableSeeder::class);
+        $this->call(PromotionsTableSeeder::class);
     }
 
 }

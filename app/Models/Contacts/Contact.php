@@ -14,4 +14,10 @@ class Contact extends Model
     {
         return $this->hasMany(\App\Models\ContactHasServices\ContactHasService::class, 'contact_id', 'id');
     }
+
+    public function getReferrals()
+    {
+    	return Contact::where('referred_by', '=' , $this->dni )->get()   ;
+
+    }
 }

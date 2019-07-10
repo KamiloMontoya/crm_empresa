@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 use Response;
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\Upload;
 use App\Models\InstallationOrders\InstallationOrder;
+use App\Models\InstallationOrders\InstallationOrderStatus;
 use App\Models\InstallationOrders\HistoryInstallationOrder;
 use App\Models\ContactHasServices\ContactHasService;
-
-use App\Http\Helpers\Upload;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -40,6 +40,7 @@ class InstallationOrderController extends Controller
         return view('installation_orders.index', ['installation_orders' => $installation_orders->paginate(10), 'request' => $request->all()] );
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -83,7 +84,11 @@ class InstallationOrderController extends Controller
 
                 $installation_orders = new InstallationOrder();
                 $installation_orders->contact_has_service_id = $chs->id; 
-                $installation_orders->status = InstallationOrder::ESTADO_DISPONIBLE; 
+                $status = InstallationOrderStatus::where('is_default', '=', true)->first();
+                if ($status){
+                    $installation_orders->status = $status->name ; 
+                }
+                
                 $installation_orders->save();
 
                 $response['code']     = 200;

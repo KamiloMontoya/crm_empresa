@@ -14,15 +14,21 @@ class ProfileTableSeeder extends Seeder
     public function run()
     {
         // Module
-        $moduleId = DB::table('modules')->insertGetId([
-            'name' => 'profile',
-            'display_name' => 'Profile',
-            'icon' => 'icon-user',
-            'active' => false
-        ]);
+        $module = DB::table('modules')->where('name', 'profile')->first();
+        if(!$module){
+            $module = DB::table('modules')->insert([
+                'name' => 'profile',
+                'display_name' => 'Profile',
+                'icon' => 'icon-user',
+                'active' => false
+            ]);
+        }
+        $module = DB::table('modules')->where('name', 'profile')->first();
+        $moduleId = $module->id;
+
 
         // Permissions
-        DB::table('permissions')->insert([
+        $permissions = [
             [
                 'name' => 'read-profile',
                 'display_name' => 'Read Profile',
@@ -47,7 +53,14 @@ class ProfileTableSeeder extends Seeder
                 'guard_name' => 'web',
                 'module_id' => $moduleId
             ]
-        ]);
+        ];
+
+        foreach ($permissions as $permission_data) {
+            $_permision = DB::table('permissions')->where('name',  $permission_data['name'])->first();
+            if (!$_permision ){
+                Permission::create($permission_data);
+            }
+        }
 
         // Assign permissions to admin role
         $admin = Role::findByName('admin');

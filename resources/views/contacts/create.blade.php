@@ -5,7 +5,7 @@
 	    <div class="row justify-content-md-center">
 	      <div class="col-md-9 col-xl-7">
 	        <div class="card-header px-0 mt-2 bg-transparent clearfix">
-		        <h4 class="float-left pt-2">Nuevo Contacto</h4>
+		        <h4 class="float-left pt-2">Nuevo cliente (contacto)</h4>
 		        <div class="card-header-actions mr-1">
 		            <button class="btn btn-primary" id="submit-form" >
 		            	Guardar 
@@ -30,9 +30,13 @@
 	@parent
 		<script type="text/javascript">
 			$(document).ready(function() {
+				var submiting_form = false;
 				$( "#submit-form" ).click(function(event) {
 					event.preventDefault();
-				  	$("#form").submit();
+					if (!submiting_form){
+						submiting_form = true;
+						$("#form").submit();
+					}
 				});
 			});
 		</script>

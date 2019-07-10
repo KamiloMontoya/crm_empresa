@@ -83,8 +83,16 @@
         <script type="text/javascript">
             $.fn.selectpicker.Constructor.BootstrapVersion = '4';
             $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
+                $('[data-toggle="tooltip"]').tooltip();
             })
+
+            $('.only-numbers').keyup(function(e){
+                if (/\D/g.test(this.value))
+                {
+                    // Filter non-digits from input value.
+                    this.value = this.value.replace(/\D/g, '');
+                }
+            });
         </script>
     @show
 </body>

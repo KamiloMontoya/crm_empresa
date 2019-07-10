@@ -20,7 +20,7 @@
 
 						    <div class="card-header bg-transparent clearfix"> 
 						    	<div class="card-header-actions">
-							    	<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#modalNewContactService"> <i class="fa fa-plus"></i> Agregar servicio </button>
+							    	<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalNewContactService"> <i class="fa fa-plus"></i> Agregar servicio </button>
 					        	</div>
 					        </div>
 					    	@if($contact->contactHasService->count() > 0)
@@ -29,7 +29,7 @@
 								        <tr>
 								            <th> Cus </th>
 								            <th> Servicio </th>
-								            <th class="d-none d-sm-table-cell"> Valor ($) </th>
+								            <th class="d-none d-sm-table-cell"> Promoción </th>
 								            <th> Acciones </th>
 								        </tr>
 							        </thead>
@@ -38,15 +38,19 @@
 								        <tr>
 								            <td>{{ $chs->cus }}</td>
 								            <td>{{ $chs->service->name }}</td>
-								            <td class="d-none d-sm-table-cell">{{ $chs->service->value }}</td>
+								            <td class="d-none d-sm-table-cell">{{ $chs->promotion ? $chs->promotion->name : '-' }}</td>
 								            <td>
-								            	<button class="btn btn-sm btn-warning generate-installation-order" data-toggle="tooltip" data-cus="{{$chs->cus}}" title="Generar Orden de Instalación" ><i class="fa fa-briefcase "></i></button>
+								            	@if(!$chs->installationOrder)
+								            		<button class="btn btn-sm btn-warning generate-installation-order" data-toggle="tooltip" data-cus="{{$chs->cus}}" title="Generar Orden de Instalación" ><i class="fa fa-briefcase "></i></button>
+								            	@endif
 
-												<form action="{{ route('contact_has_services.destroy', $chs->id) }}" class="delete_contactService" method="POST" style="display: inline;">
+								            	<a class="btn btn-sm btn-primary " data-toggle="tooltip" target="_blank" href="{{ route('contact_has_services.edit', $chs->id) }}" title="Ver detalle" ><i class="fa fa-eye" ></i></a>
+
+												<!-- <form action="{{ route('contact_has_services.destroy', $chs->id) }}" class="delete_contactService" method="POST" style="display: inline;">
 							                      <input type="hidden" name="_method" value="DELETE">
 							                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
 							                      <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip"  title="Eliminar" ><i class="fa fa-trash"></i></button>
-							                    </form>
+							                    </form> -->
 
 								            </td>
 								        </tr>
@@ -67,7 +71,6 @@
 	</div>
 </div>
 
-
 <!-- Modal New Service -->
 <div class="modal fade" id="modalNewContactService" tabindex="-1" role="dialog" aria-labelledby="modalNewContactServiceLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -79,13 +82,29 @@
         </button>
       </div>
       <div class="modal-body">
-        {!!  Form::model(null,['route' => 'contact_has_services.store', 'id' => 'formNewContactService', 'method' => 'GET']) !!}
+        {!!  Form::model(null,['route' => 'contact_has_services.store', 'id' => 'formNewContactService', 'method' => 'POST', 'enctype' => 'multipart/form-data' ]) !!}
 		   	<div class="row">
 		        <div class="col-12"> 
 		        	{!! Form::hidden('contact_id', $contact->id,   ['id' => 'contact_id'] ) !!}
 
-		        	<label> Servicio: </label>
-			        {!! Form::select('service_id', \App\Models\Services\Service::pluck('name', 'id')->toArray(), null, ['id' => 'service_id', 'class' => 'form-control required', 'placeholder' => 'Seleccione un servicio'] ) !!}
+		        	<div class="form-group">
+			        	<label> Servicio (*): </label>
+				        {!! Form::select('service_id', \App\Models\Services\Service::pluck('name', 'id')->toArray(), null, ['id' => 'service_id', 'class' => 'form-control required', 'placeholder' => 'Seleccione un servicio'] ) !!}
+				    </div>
+
+				    <div class="form-group">
+				        <label> Promoción del mes: </label>
+				        {!! Form::select('promotion_id', \App\Models\Promotions\Promotion::pluck('name', 'id')->toArray(), null, ['id' => 'promotion_id', 'class' => 'form-control', 'placeholder' => 'Seleccione un servicio'] ) !!}
+				    </div>
+
+			        <div class="form-group">
+			            <label><b>Adjuntos</b></label>
+			            <br>
+			            <input name="file_one" type="file"  style="font-size: 0.8em"/>
+			            <br>
+			            <input name="file_two" type="file"  style="font-size: 0.8em" />
+			        </div> 
+
 		        </div>
 		    </div>
 	    {!!  Form::close() !!}
@@ -105,13 +124,13 @@
 				$( "#saveNewContactService" ).click(function(event) {
 					event.preventDefault(); // avoid to execute the actual submit of the form.
 
-					var params = {
+					var mandatory_params = {
 						contact_id: $("#contact_id" ,"#formNewContactService" ).val(),
 						service_id: $("#service_id" ,"#formNewContactService" ).val()
 					}
 
 					var errors = 0;
-					$.each(params, function(temd,value){
+					$.each(mandatory_params, function(temd,value){
 						if(value == '' || value == 'undefined'){
 							errors ++;
 						}
@@ -121,21 +140,22 @@
 						swal('Error', 'Debe seleccionar todos los campos para poder continuar.', 'error');
 					}else{
 						
-
 						swal( {
 							text: "Procesando",
 							title: "Por favor espere",
 						    button: false,
 						});
 
-
 						var form = $("#formNewContactService");
 				    	var url = form.attr('action');
+				    	var data_form = new FormData($("#formNewContactService")[0]);
 
 						$.ajax({
-				           type: "GET",
+				           type: "POST",
 				           url: url,
-				           data: params, // serializes the form's elements.
+				           data: data_form, // serializes the form's elements.
+				           contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+    					   processData: false, // NEEDED, DON'T OMIT THIS
 				           success: function(data)
 				           {
 				               swal( {
