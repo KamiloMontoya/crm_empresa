@@ -16,5 +16,6 @@ class Service extends Model
     {
         return $this->hasMany(\App\Models\ContactHasServices\ContactHasService::class, 'service_id', 'id');
     }
-   
+   	
+   	
 }

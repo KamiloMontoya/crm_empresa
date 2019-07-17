@@ -53,6 +53,14 @@
             </li>
             @endcan
 
+            @can('read-service_status')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('services_statuses.index') }}">
+                    <i class="nav-icon fa fa-briefcase"></i> Estados Servicios
+                </a>
+            </li>
+            @endcan
+
             @can('read-promotions')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('promotions.index') }}">

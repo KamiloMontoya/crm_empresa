@@ -10,8 +10,6 @@ class ContactHasService extends Model
 	use SoftDeletes;
 
 	const ESTADO_ACTIVO = 'activo';
-	const ESTADO_SUSPENDIDO = 'suspendido';
-	const ESTADO_CANCELADO    = 'cancelado';
 
 	public function contact()
     {
@@ -40,16 +38,18 @@ class ContactHasService extends Model
 
     public static  function getStatus()
     {
-        return array(
-        	self::ESTADO_ACTIVO => self::ESTADO_ACTIVO,
-        	self::ESTADO_SUSPENDIDO => self::ESTADO_SUSPENDIDO,
-        	self::ESTADO_CANCELADO => self::ESTADO_CANCELADO
-        );
+       return \App\Models\Services\ServiceStatus::pluck('service_statuses.name', 'service_statuses.long_name')->toArray();
     }
 
     public static  function getDefaultStatus()
-    {
-        return self::ESTADO_ACTIVO ;
+    {   
+        $status = null;
+
+        $default_status = \App\Models\Services\ServiceStatus::where("is_default", "=", 1)->first();
+        if($default_status){
+            $status = $default_status->name;
+        }
+        return $status ;
     }
 
   

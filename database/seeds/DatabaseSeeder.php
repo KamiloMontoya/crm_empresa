@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(InstallationOrderTableSeeder::class);
         $this->call(InstallationOrderStatusTableSeeder::class);
         $this->call(PromotionsTableSeeder::class);
+        $this->call(ServiceStatusTableSeeder::class);
+        
     }
 
 }
