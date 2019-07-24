@@ -36,6 +36,7 @@ require __DIR__ . '/installation_orders/installation_orders.php';
 require __DIR__ . '/installation_orders/installation_orders_statuses.php';
 require __DIR__ . '/promotions/promotions.php';
 require __DIR__ . '/services/services_statuses.php';
+require __DIR__ . '/invoices/invoices.php';
 
 
 

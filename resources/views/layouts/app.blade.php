@@ -61,7 +61,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
-     <link href="{{ asset('css/third/bootstrap-select/bootstrap-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/third/bootstrap-select/bootstrap-select.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
    <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.css"> -->
 </head>
 <body class="app header-fixed sidebar-fixed sidebar-lg-show">
@@ -80,6 +81,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="{{ asset('js/third/bootstrap-select/bootstrap-select.js') }}"></script>
         <script src="{{ asset('js/third/tiny_mce/tiny_mce.js') }}"></script>
+        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"></script>
         <script type="text/javascript">
             $.fn.selectpicker.Constructor.BootstrapVersion = '4';
             $(function () {

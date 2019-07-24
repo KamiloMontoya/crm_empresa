@@ -83,7 +83,10 @@
 
 			            
 			            <td >
-			              <a href="{{ route('contact_has_services.edit', $chs->id) }}" class="text-muted"><i class="fas fa-pencil-alt"></i></a>
+			              <a href="{{ route('contact_has_services.edit', $chs->id) }}" class="text-muted" data-toggle="tooltip" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+
+			               <a href="{{ route('contact_has_services.edit', $chs->id) }}" class="" data-toggle="tooltip" title="Generar factura"><i class="fas fa-file"></i></a>
+			              
 			            </td>
 			        </tr>
 			        @endforeach

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 	    <div class="row justify-content-md-center">
-	      <div class="col-md-9 col-xl-7">
+	      <div class="col-10">
 	        <div class="card-header px-0 mt-2 bg-transparent clearfix">
 		        <h4 class="float-left pt-2">Nuevo cliente (contacto)</h4>
 		        <div class="card-header-actions mr-1">

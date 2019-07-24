@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 	    <div class="row justify-content-md-center">
-	      <div class="col-md-9 col-xl-7">
+	      <div class="col-md-10">
 	        <div class="card-header px-0 mt-2 bg-transparent clearfix">
 		        <h4 class="float-left pt-2">Editar Orden de Instalación</h4>
 		        <div class="card-header-actions mr-1">
